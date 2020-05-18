@@ -1,0 +1,44 @@
+20:51:54 **** Build of configuration Debug for project tst_845 ****
+make -r -j2 all 
+Building file: ../src/cr_startup_lpc84x.c
+Building file: ../src/aeabi_romdiv_patch.s
+Invoking: MCU Assembler
+arm-none-eabi-gcc -c -x assembler-with-cpp -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__USE_ROMDIVIDE -D__LPC84X__ -D__REDLIB__ -g3 -mcpu=cortex-m0 -mthumb -specs=redlib.specs -o "src/aeabi_romdiv_patch.o" "../src/aeabi_romdiv_patch.s"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__USE_ROMDIVIDE -D__LPC84X__ -D__REDLIB__ -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc84x.d" -MT"src/cr_startup_lpc84x.o" -MT"src/cr_startup_lpc84x.d" -o "src/cr_startup_lpc84x.o" "../src/cr_startup_lpc84x.c"
+Finished building: ../src/aeabi_romdiv_patch.s
+Finished building: ../src/cr_startup_lpc84x.c
+ 
+Building file: ../src/crp.c
+ 
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__USE_ROMDIVIDE -D__LPC84X__ -D__REDLIB__ -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
+Building file: ../src/mtb.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__USE_ROMDIVIDE -D__LPC84X__ -D__REDLIB__ -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/mtb.d" -MT"src/mtb.o" -MT"src/mtb.d" -o "src/mtb.o" "../src/mtb.c"
+Finished building: ../src/crp.c
+ 
+Building file: ../src/tst_845.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__USE_ROMDIVIDE -D__LPC84X__ -D__REDLIB__ -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/tst_845.d" -MT"src/tst_845.o" -MT"src/tst_845.d" -o "src/tst_845.o" "../src/tst_845.c"
+Finished building: ../src/mtb.c
+ 
+Finished building: ../src/tst_845.c
+ 
+Building target: tst_845.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="tst_845.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "tst_845_Debug.ld" -o "tst_845.axf"  ./src/aeabi_romdiv_patch.o ./src/cr_startup_lpc84x.o ./src/crp.o ./src/mtb.o ./src/tst_845.o   
+Memory region         Used Size  Region Size  %age Used
+        MFlash64:         560 B        64 KB      0.85%
+        RamLoc16:          12 B        16 KB      0.07%
+Finished building target: tst_845.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "tst_845.axf"; # arm-none-eabi-objcopy -v -O binary "tst_845.axf" "tst_845.bin" ; # checksum -p LPC845 -d "tst_845.bin";
+   text	   data	    bss	    dec	    hex	filename
+    560	      0	     12	    572	    23c	tst_845.axf
+ 
+
+20:51:54 Build Finished (took 486ms)
+

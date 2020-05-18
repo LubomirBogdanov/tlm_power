@@ -1,0 +1,7 @@
+23:36:51 **** Clean-only build of configuration Debug for project multi_proc_system ****
+make -r -j2 clean 
+rm -rf  ./src/cr_startup_lpc8xx.o ./src/crp.o ./src/mtb.o ./src/multi_proc_system.o  ./src/cr_startup_lpc8xx.d ./src/crp.d ./src/mtb.d ./src/multi_proc_system.d  multi_proc_system.axf
+ 
+
+23:36:51 Build Finished (took 129ms)
+

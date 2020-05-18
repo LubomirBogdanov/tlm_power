@@ -1,0 +1,328 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+                              gcc/cr_startup_lpc8xx.o (__main)
+
+Discarded input sections
+
+ .group         0x0000000000000000        0xc gcc/cr_startup_lpc8xx.o
+ .text          0x0000000000000000        0x0 gcc/cr_startup_lpc8xx.o
+ .data          0x0000000000000000        0x0 gcc/cr_startup_lpc8xx.o
+ .bss           0x0000000000000000        0x0 gcc/cr_startup_lpc8xx.o
+ .group         0x0000000000000000        0xc gcc/crp.o
+ .group         0x0000000000000000        0xc gcc/crp.o
+ .text          0x0000000000000000        0x0 gcc/crp.o
+ .data          0x0000000000000000        0x0 gcc/crp.o
+ .bss           0x0000000000000000        0x0 gcc/crp.o
+ .crp           0x0000000000000000        0x4 gcc/crp.o
+ .debug_info    0x0000000000000000       0x3f gcc/crp.o
+ .debug_abbrev  0x0000000000000000       0x36 gcc/crp.o
+ .debug_aranges
+                0x0000000000000000       0x18 gcc/crp.o
+ .debug_macro   0x0000000000000000       0x1a gcc/crp.o
+ .debug_macro   0x0000000000000000      0xa60 gcc/crp.o
+ .debug_macro   0x0000000000000000       0x34 gcc/crp.o
+ .debug_line    0x0000000000000000       0xb2 gcc/crp.o
+ .debug_str     0x0000000000000000     0x2d62 gcc/crp.o
+ .comment       0x0000000000000000       0x80 gcc/crp.o
+ .ARM.attributes
+                0x0000000000000000       0x31 gcc/crp.o
+ .group         0x0000000000000000        0xc gcc/mtb.o
+ .text          0x0000000000000000        0x0 gcc/mtb.o
+ .data          0x0000000000000000        0x0 gcc/mtb.o
+ .bss           0x0000000000000000        0x0 gcc/mtb.o
+ .debug_info    0x0000000000000000       0x21 gcc/mtb.o
+ .debug_abbrev  0x0000000000000000       0x13 gcc/mtb.o
+ .debug_aranges
+                0x0000000000000000       0x18 gcc/mtb.o
+ .debug_macro   0x0000000000000000       0x11 gcc/mtb.o
+ .debug_macro   0x0000000000000000      0xa60 gcc/mtb.o
+ .debug_line    0x0000000000000000       0x2a gcc/mtb.o
+ .debug_str     0x0000000000000000     0x2c79 gcc/mtb.o
+ .comment       0x0000000000000000       0x80 gcc/mtb.o
+ .ARM.attributes
+                0x0000000000000000       0x31 gcc/mtb.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .group         0x0000000000000000        0xc gcc/main.o
+ .text          0x0000000000000000        0x0 gcc/main.o
+ .data          0x0000000000000000        0x0 gcc/main.o
+ .bss           0x0000000000000000        0x0 gcc/main.o
+ .debug_macro   0x0000000000000000      0xa60 gcc/main.o
+ .text          0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+ .data          0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+ .bss           0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+MFlash4          0x0000000000000000 0x0000000000001000 xr
+RamLoc1          0x0000000010000000 0x0000000000000400 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD gcc/cr_startup_lpc8xx.o
+LOAD gcc/crp.o
+LOAD gcc/mtb.o
+LOAD gcc/main.o
+START GROUP
+LOAD /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a
+LOAD /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libcr_eabihelpers.a
+LOAD /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libgcc.a
+END GROUP
+                0x0000000000000000                __base_MFlash4 = 0x0
+                0x0000000000000000                __base_Flash = 0x0
+                0x0000000000001000                __top_MFlash4 = 0x1000
+                0x0000000000001000                __top_Flash = 0x1000
+                0x0000000010000000                __base_RamLoc1 = 0x10000000
+                0x0000000010000000                __base_RAM = 0x10000000
+                0x0000000010000400                __top_RamLoc1 = 0x10000400
+                0x0000000010000400                __top_RAM = 0x10000400
+
+.text           0x0000000000000000      0x284
+ FILL mask 0xff
+                0x0000000000000000                __vectors_start__ = ABSOLUTE (.)
+ *(.isr_vector)
+ .isr_vector    0x0000000000000000       0xc0 gcc/cr_startup_lpc8xx.o
+                0x0000000000000000                g_pfnVectors
+                0x00000000000000c0                . = ALIGN (0x4)
+                0x00000000000000c0                __section_table_start = .
+                0x00000000000000c0                __data_section_table = .
+                0x00000000000000c0        0x4 LONG 0x284 LOADADDR (.data)
+                0x00000000000000c4        0x4 LONG 0x10000000 ADDR (.data)
+                0x00000000000000c8        0x4 LONG 0x0 SIZEOF (.data)
+                0x00000000000000cc                __data_section_table_end = .
+                0x00000000000000cc                __bss_section_table = .
+                0x00000000000000cc        0x4 LONG 0x10000000 ADDR (.bss)
+                0x00000000000000d0        0x4 LONG 0x0 SIZEOF (.bss)
+                0x00000000000000d4                __bss_section_table_end = .
+                0x00000000000000d4                __section_table_end = .
+ *(.after_vectors*)
+ .after_vectors
+                0x00000000000000d4      0x114 gcc/cr_startup_lpc8xx.o
+                0x00000000000000d4                data_init
+                0x0000000000000114                bss_init
+                0x0000000000000148                ResetISR
+                0x00000000000001c4                NMI_Handler
+                0x00000000000001ca                HardFault_Handler
+                0x00000000000001d0                SVC_Handler
+                0x00000000000001d6                PendSV_Handler
+                0x00000000000001dc                SysTick_Handler
+                0x00000000000001e2                CMP_IRQHandler
+                0x00000000000001e2                PININT7_IRQHandler
+                0x00000000000001e2                WKT_IRQHandler
+                0x00000000000001e2                PININT2_IRQHandler
+                0x00000000000001e2                PININT1_IRQHandler
+                0x00000000000001e2                MRT_IRQHandler
+                0x00000000000001e2                UART1_IRQHandler
+                0x00000000000001e2                UART0_IRQHandler
+                0x00000000000001e2                SPI1_IRQHandler
+                0x00000000000001e2                IntDefaultHandler
+                0x00000000000001e2                PININT3_IRQHandler
+                0x00000000000001e2                UART2_IRQHandler
+                0x00000000000001e2                PININT5_IRQHandler
+                0x00000000000001e2                PININT4_IRQHandler
+                0x00000000000001e2                PININT0_IRQHandler
+                0x00000000000001e2                BOD_IRQHandler
+                0x00000000000001e2                SCT_IRQHandler
+                0x00000000000001e2                I2C_IRQHandler
+                0x00000000000001e2                WDT_IRQHandler
+                0x00000000000001e2                PININT6_IRQHandler
+                0x00000000000001e2                SPI0_IRQHandler
+ *(.text*)
+ .text.main     0x00000000000001e8       0x94 gcc/main.o
+                0x00000000000001e8                main
+ .text.__weak_main
+                0x000000000000027c        0x8 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+                0x000000000000027c                __main
+                0x000000000000027c                __weak_main
+ *(.rodata .rodata.* .constdata .constdata.*)
+                0x0000000000000284                . = ALIGN (0x4)
+
+.glue_7         0x0000000000000284        0x0
+ .glue_7        0x0000000000000284        0x0 linker stubs
+
+.glue_7t        0x0000000000000284        0x0
+ .glue_7t       0x0000000000000284        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000000284        0x0
+ .vfp11_veneer  0x0000000000000284        0x0 linker stubs
+
+.v4_bx          0x0000000000000284        0x0
+ .v4_bx         0x0000000000000284        0x0 linker stubs
+
+.iplt           0x0000000000000284        0x0
+ .iplt          0x0000000000000284        0x0 gcc/cr_startup_lpc8xx.o
+
+.rel.dyn        0x0000000000000284        0x0
+ .rel.iplt      0x0000000000000284        0x0 gcc/cr_startup_lpc8xx.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x0000000000000284                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000000000000284                __exidx_end = .
+                0x0000000000000284                _etext = .
+
+.mtb_buffer_default
+ *(.mtb*)
+
+.uninit_RESERVED
+                0x0000000010000000        0x0
+ *(.bss.$RESERVED*)
+                0x0000000010000000                . = ALIGN (0x4)
+                0x0000000010000000                _end_uninit_RESERVED = .
+
+.data           0x0000000010000000        0x0 load address 0x0000000000000284
+ FILL mask 0xff
+                0x0000000010000000                _data = .
+ *(vtable)
+ *(.ramfunc*)
+ *(.data*)
+                0x0000000010000000                . = ALIGN (0x4)
+                0x0000000010000000                _edata = .
+
+.igot.plt       0x0000000010000000        0x0 load address 0x0000000000000284
+ .igot.plt      0x0000000010000000        0x0 gcc/cr_startup_lpc8xx.o
+
+.bss            0x0000000010000000        0x0 load address 0x0000000000000284
+                0x0000000010000000                _bss = .
+ *(.bss*)
+ *(COMMON)
+                0x0000000010000000                . = ALIGN (0x4)
+                0x0000000010000000                _ebss = .
+                [!provide]                        PROVIDE (end = .)
+
+.noinit         0x0000000010000000        0x0 load address 0x0000000000000284
+                0x0000000010000000                _noinit = .
+ *(.noinit*)
+                0x0000000010000000                . = ALIGN (0x4)
+                0x0000000010000000                _end_noinit = .
+                [!provide]                        PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
+                0x0000000010000400                PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc1 - 0x0))
+                0xffffffffeffff727                PROVIDE (__valid_user_code_checksum = (0x0 - (((_vStackTop + (ResetISR + 0x1)) + (DEFINED (NMI_Handler)?NMI_Handler:M0_NMI_Handler + 0x1)) + (DEFINED (HardFault_Handler)?HardFault_Handler:M0_HardFault_Handler + 0x1))))
+                0x0000000000000000                _image_start = LOADADDR (.text)
+                0x0000000000000284                _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x0000000000000284                _image_size = (_image_end - _image_start)
+OUTPUT(gcc/main.axf elf32-littlearm)
+
+.debug_info     0x0000000000000000      0x807
+ .debug_info    0x0000000000000000      0x204 gcc/cr_startup_lpc8xx.o
+ .debug_info    0x0000000000000204      0x603 gcc/main.o
+
+.debug_abbrev   0x0000000000000000      0x215
+ .debug_abbrev  0x0000000000000000       0xf4 gcc/cr_startup_lpc8xx.o
+ .debug_abbrev  0x00000000000000f4      0x121 gcc/main.o
+
+.debug_aranges  0x0000000000000000       0x80
+ .debug_aranges
+                0x0000000000000000       0x60 gcc/cr_startup_lpc8xx.o
+ .debug_aranges
+                0x0000000000000060       0x20 gcc/main.o
+
+.debug_ranges   0x0000000000000000       0x60
+ .debug_ranges  0x0000000000000000       0x50 gcc/cr_startup_lpc8xx.o
+ .debug_ranges  0x0000000000000050       0x10 gcc/main.o
+
+.debug_macro    0x0000000000000000     0x2713
+ .debug_macro   0x0000000000000000       0x1d gcc/cr_startup_lpc8xx.o
+ .debug_macro   0x000000000000001d      0xa60 gcc/cr_startup_lpc8xx.o
+ .debug_macro   0x0000000000000a7d      0x1e0 gcc/main.o
+ .debug_macro   0x0000000000000c5d       0x10 gcc/main.o
+ .debug_macro   0x0000000000000c6d      0x12d gcc/main.o
+ .debug_macro   0x0000000000000d9a      0x5b2 gcc/main.o
+ .debug_macro   0x000000000000134c       0x22 gcc/main.o
+ .debug_macro   0x000000000000136e       0x7b gcc/main.o
+ .debug_macro   0x00000000000013e9       0x10 gcc/main.o
+ .debug_macro   0x00000000000013f9       0x28 gcc/main.o
+ .debug_macro   0x0000000000001421       0x3a gcc/main.o
+ .debug_macro   0x000000000000145b       0x1f gcc/main.o
+ .debug_macro   0x000000000000147a      0x250 gcc/main.o
+ .debug_macro   0x00000000000016ca      0x145 gcc/main.o
+ .debug_macro   0x000000000000180f       0xca gcc/main.o
+ .debug_macro   0x00000000000018d9       0x6a gcc/main.o
+ .debug_macro   0x0000000000001943       0x70 gcc/main.o
+ .debug_macro   0x00000000000019b3       0x28 gcc/main.o
+ .debug_macro   0x00000000000019db      0x190 gcc/main.o
+ .debug_macro   0x0000000000001b6b       0x24 gcc/main.o
+ .debug_macro   0x0000000000001b8f       0x64 gcc/main.o
+ .debug_macro   0x0000000000001bf3       0x10 gcc/main.o
+ .debug_macro   0x0000000000001c03       0x22 gcc/main.o
+ .debug_macro   0x0000000000001c25       0xb2 gcc/main.o
+ .debug_macro   0x0000000000001cd7       0x58 gcc/main.o
+ .debug_macro   0x0000000000001d2f       0x58 gcc/main.o
+ .debug_macro   0x0000000000001d87       0x6a gcc/main.o
+ .debug_macro   0x0000000000001df1       0x82 gcc/main.o
+ .debug_macro   0x0000000000001e73       0x16 gcc/main.o
+ .debug_macro   0x0000000000001e89      0x131 gcc/main.o
+ .debug_macro   0x0000000000001fba       0x22 gcc/main.o
+ .debug_macro   0x0000000000001fdc       0x52 gcc/main.o
+ .debug_macro   0x000000000000202e      0x181 gcc/main.o
+ .debug_macro   0x00000000000021af      0x289 gcc/main.o
+ .debug_macro   0x0000000000002438      0x28b gcc/main.o
+ .debug_macro   0x00000000000026c3       0x2e gcc/main.o
+ .debug_macro   0x00000000000026f1       0x22 gcc/main.o
+
+.debug_line     0x0000000000000000      0x497
+ .debug_line    0x0000000000000000       0xb3 gcc/cr_startup_lpc8xx.o
+ .debug_line    0x00000000000000b3      0x3e4 gcc/main.o
+
+.debug_str      0x0000000000000000     0xa7ba
+ .debug_str     0x0000000000000000     0x2df7 gcc/cr_startup_lpc8xx.o
+                                       0x2e0a (size before relaxing)
+ .debug_str     0x0000000000002df7     0x79c3 gcc/main.o
+                                       0xa700 (size before relaxing)
+
+.comment        0x0000000000000000       0x7f
+ .comment       0x0000000000000000       0x7f gcc/cr_startup_lpc8xx.o
+                                         0x80 (size before relaxing)
+ .comment       0x000000000000007f       0x80 gcc/main.o
+ .comment       0x000000000000007f       0x80 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+
+.ARM.attributes
+                0x0000000000000000       0x31
+ .ARM.attributes
+                0x0000000000000000       0x31 gcc/cr_startup_lpc8xx.o
+ .ARM.attributes
+                0x0000000000000031       0x31 gcc/main.o
+ .ARM.attributes
+                0x0000000000000062       0x31 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+
+.debug_frame    0x0000000000000000      0x148
+ .debug_frame   0x0000000000000000      0x118 gcc/cr_startup_lpc8xx.o
+ .debug_frame   0x0000000000000118       0x30 gcc/main.o
