@@ -2,7 +2,7 @@
 PROJECT			= main
 #Add additional files here. The ${PROJECT}.c should be at the end.
 SRC			= cr_startup_lpc8xx.c crp.c mtb.c ${PROJECT}.c   
-#The name of the directory with the output files
+
 INDIR			= src
 OUTDIR			= gcc
 OBJ			= ${SRC:%.c=${OUTDIR}/%.o}
@@ -29,6 +29,12 @@ OBJCOPYFLAGS		= -O ihex
 FLASHCMD_PATH		= /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.bin.linux_10.3.1.201902141129/binaries
 FLASHCMD		= ${FLASHCMD_PATH}/crt_emu_cm_redlink
 FLASHCMDFLAGS		= -pLPC810 -vendor=NXP -flash-load-exec
+SWDMULTIPLEX_PORT_CMD	= stty
+SWDMULTIPLEX_PORT_PARAM	= -F /dev/ttyUSB0 2400 -parenb cs8 -cstopb -crtscts raw
+SWDMULTIPLEX_DEV	= /dev/ttyUSB0
+SWDMULTIPLEX_CMD	= echo -e -n "\x5" > ${SWDMULTIPLEX_DEV}
+SWDMULTIPLEX_PARAM	= 
+
 
 all: ${OUTDIR} ${OUTDIR}/${PROJECT}.axf ${OUTDIR}/${PROJECT}.lst size ${OUTDIR}/${PROJECT}.a43
 #flash_device: flash	
