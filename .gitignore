@@ -1,5 +1,5 @@
 /multi_proc_system/Debug
-/gcc
+/multi_proc_system/gcc
 *.axf
 *.d
 *.o
