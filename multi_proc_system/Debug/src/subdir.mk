@@ -6,20 +6,20 @@
 C_SRCS += \
 ../src/cr_startup_lpc8xx.c \
 ../src/crp.c \
-../src/mtb.c \
-../src/multi_proc_system.c 
+../src/main.c \
+../src/mtb.c 
 
 OBJS += \
 ./src/cr_startup_lpc8xx.o \
 ./src/crp.o \
-./src/mtb.o \
-./src/multi_proc_system.o 
+./src/main.o \
+./src/mtb.o 
 
 C_DEPS += \
 ./src/cr_startup_lpc8xx.d \
 ./src/crp.d \
-./src/mtb.d \
-./src/multi_proc_system.d 
+./src/main.d \
+./src/mtb.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

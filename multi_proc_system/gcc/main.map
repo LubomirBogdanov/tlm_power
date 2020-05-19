@@ -112,7 +112,7 @@ END GROUP
                 0x0000000010000400                __top_RamLoc1 = 0x10000400
                 0x0000000010000400                __top_RAM = 0x10000400
 
-.text           0x0000000000000000      0x284
+.text           0x0000000000000000      0x240
  FILL mask 0xff
                 0x0000000000000000                __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -121,7 +121,7 @@ END GROUP
                 0x00000000000000c0                . = ALIGN (0x4)
                 0x00000000000000c0                __section_table_start = .
                 0x00000000000000c0                __data_section_table = .
-                0x00000000000000c0        0x4 LONG 0x284 LOADADDR (.data)
+                0x00000000000000c0        0x4 LONG 0x240 LOADADDR (.data)
                 0x00000000000000c4        0x4 LONG 0x10000000 ADDR (.data)
                 0x00000000000000c8        0x4 LONG 0x0 SIZEOF (.data)
                 0x00000000000000cc                __data_section_table_end = .
@@ -163,41 +163,41 @@ END GROUP
                 0x00000000000001e2                PININT6_IRQHandler
                 0x00000000000001e2                SPI0_IRQHandler
  *(.text*)
- .text.main     0x00000000000001e8       0x94 gcc/main.o
+ .text.main     0x00000000000001e8       0x50 gcc/main.o
                 0x00000000000001e8                main
  .text.__weak_main
-                0x000000000000027c        0x8 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
-                0x000000000000027c                __main
-                0x000000000000027c                __weak_main
+                0x0000000000000238        0x8 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libcr_c.a(__weak__main.o)
+                0x0000000000000238                __main
+                0x0000000000000238                __weak_main
  *(.rodata .rodata.* .constdata .constdata.*)
-                0x0000000000000284                . = ALIGN (0x4)
+                0x0000000000000240                . = ALIGN (0x4)
 
-.glue_7         0x0000000000000284        0x0
- .glue_7        0x0000000000000284        0x0 linker stubs
+.glue_7         0x0000000000000240        0x0
+ .glue_7        0x0000000000000240        0x0 linker stubs
 
-.glue_7t        0x0000000000000284        0x0
- .glue_7t       0x0000000000000284        0x0 linker stubs
+.glue_7t        0x0000000000000240        0x0
+ .glue_7t       0x0000000000000240        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000000284        0x0
- .vfp11_veneer  0x0000000000000284        0x0 linker stubs
+.vfp11_veneer   0x0000000000000240        0x0
+ .vfp11_veneer  0x0000000000000240        0x0 linker stubs
 
-.v4_bx          0x0000000000000284        0x0
- .v4_bx         0x0000000000000284        0x0 linker stubs
+.v4_bx          0x0000000000000240        0x0
+ .v4_bx         0x0000000000000240        0x0 linker stubs
 
-.iplt           0x0000000000000284        0x0
- .iplt          0x0000000000000284        0x0 gcc/cr_startup_lpc8xx.o
+.iplt           0x0000000000000240        0x0
+ .iplt          0x0000000000000240        0x0 gcc/cr_startup_lpc8xx.o
 
-.rel.dyn        0x0000000000000284        0x0
- .rel.iplt      0x0000000000000284        0x0 gcc/cr_startup_lpc8xx.o
+.rel.dyn        0x0000000000000240        0x0
+ .rel.iplt      0x0000000000000240        0x0 gcc/cr_startup_lpc8xx.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000000000284                __exidx_start = .
+                0x0000000000000240                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000000000000284                __exidx_end = .
-                0x0000000000000284                _etext = .
+                0x0000000000000240                __exidx_end = .
+                0x0000000000000240                _etext = .
 
 .mtb_buffer_default
  *(.mtb*)
@@ -208,7 +208,7 @@ END GROUP
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _end_uninit_RESERVED = .
 
-.data           0x0000000010000000        0x0 load address 0x0000000000000284
+.data           0x0000000010000000        0x0 load address 0x0000000000000240
  FILL mask 0xff
                 0x0000000010000000                _data = .
  *(vtable)
@@ -217,10 +217,10 @@ END GROUP
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _edata = .
 
-.igot.plt       0x0000000010000000        0x0 load address 0x0000000000000284
+.igot.plt       0x0000000010000000        0x0 load address 0x0000000000000240
  .igot.plt      0x0000000010000000        0x0 gcc/cr_startup_lpc8xx.o
 
-.bss            0x0000000010000000        0x0 load address 0x0000000000000284
+.bss            0x0000000010000000        0x0 load address 0x0000000000000240
                 0x0000000010000000                _bss = .
  *(.bss*)
  *(COMMON)
@@ -228,7 +228,7 @@ END GROUP
                 0x0000000010000000                _ebss = .
                 [!provide]                        PROVIDE (end = .)
 
-.noinit         0x0000000010000000        0x0 load address 0x0000000000000284
+.noinit         0x0000000010000000        0x0 load address 0x0000000000000240
                 0x0000000010000000                _noinit = .
  *(.noinit*)
                 0x0000000010000000                . = ALIGN (0x4)
@@ -237,8 +237,8 @@ END GROUP
                 0x0000000010000400                PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc1 - 0x0))
                 0xffffffffeffff727                PROVIDE (__valid_user_code_checksum = (0x0 - (((_vStackTop + (ResetISR + 0x1)) + (DEFINED (NMI_Handler)?NMI_Handler:M0_NMI_Handler + 0x1)) + (DEFINED (HardFault_Handler)?HardFault_Handler:M0_HardFault_Handler + 0x1))))
                 0x0000000000000000                _image_start = LOADADDR (.text)
-                0x0000000000000284                _image_end = (LOADADDR (.data) + SIZEOF (.data))
-                0x0000000000000284                _image_size = (_image_end - _image_start)
+                0x0000000000000240                _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x0000000000000240                _image_size = (_image_end - _image_start)
 OUTPUT(gcc/main.axf elf32-littlearm)
 
 .debug_info     0x0000000000000000      0x807
@@ -298,9 +298,9 @@ OUTPUT(gcc/main.axf elf32-littlearm)
  .debug_macro   0x00000000000026c3       0x2e gcc/main.o
  .debug_macro   0x00000000000026f1       0x22 gcc/main.o
 
-.debug_line     0x0000000000000000      0x497
+.debug_line     0x0000000000000000      0x47f
  .debug_line    0x0000000000000000       0xb3 gcc/cr_startup_lpc8xx.o
- .debug_line    0x00000000000000b3      0x3e4 gcc/main.o
+ .debug_line    0x00000000000000b3      0x3cc gcc/main.o
 
 .debug_str      0x0000000000000000     0xa7ba
  .debug_str     0x0000000000000000     0x2df7 gcc/cr_startup_lpc8xx.o

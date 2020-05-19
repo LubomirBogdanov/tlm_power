@@ -6,7 +6,7 @@ SRC			= cr_startup_lpc8xx.c crp.c mtb.c ${PROJECT}.c
 INDIR			= src
 OUTDIR			= gcc
 OBJ			= ${SRC:%.c=${OUTDIR}/%.o}
-#Toolchain prefix
+
 TOOLCHAIN_PATH		= /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin
 TOOLCHAIN_PREFIX	= arm-none-eabi
 CPU			= cortex-m0
@@ -26,11 +26,12 @@ LDFLAGS			= -nostdlib -mcpu=${CPU} -m${INSTRSET} -Xlinker -Map="${OUTDIR}/${PROJ
 OBJDUMPFLAGS		= -D -S
 SIZEFLAGS		= -d
 OBJCOPYFLAGS		= -O ihex
-FLASHCMD		= 
-FLASHCMDFLAGS		= 
+FLASHCMD_PATH		= /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.bin.linux_10.3.1.201902141129/binaries
+FLASHCMD		= ${FLASHCMD_PATH}/crt_emu_cm_redlink
+FLASHCMDFLAGS		= -pLPC810 -vendor=NXP -flash-load-exec
 
 all: ${OUTDIR} ${OUTDIR}/${PROJECT}.axf ${OUTDIR}/${PROJECT}.lst size ${OUTDIR}/${PROJECT}.a43
-flash: flash_device
+#flash_device: flash	
 
 ${OUTDIR}:
 	@mkdir -p ${OUTDIR}
@@ -56,8 +57,10 @@ size:
 ${OUTDIR}/${PROJECT}.a43:
 	${OBJCOPY} ${OBJCOPYFLAGS} ${OUTDIR}/${PROJECT}.axf ${OUTDIR}/${PROJECT}.a43
 
-flash_device:
-	${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}.a43
+flash:
+	@echo 'Flashing file: ${PROJECT}.axf'
+	${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}.axf
+	@echo ' '
 
 clean:
 	@echo 'Removing directory: ${OUTDIR}'

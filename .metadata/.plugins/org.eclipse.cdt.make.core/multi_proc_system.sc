@@ -2,9 +2,6 @@
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="com.crt.advproject.config.exe.debug.1636863026;com.crt.advproject.config.exe.debug.1636863026.;com.crt.advproject.gcc.exe.debug.1251425721;com.crt.advproject.compiler.input.704880800">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include" removed="true"/>
-<includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include-fixed" removed="true"/>
-<includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/arm-none-eabi/include" removed="true"/>
 <includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/redlib/include"/>
 <includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/features/include"/>
 <definedSymbol symbol="__STDC__=1"/>
@@ -419,9 +416,6 @@
 </instance>
 <instance id="com.crt.advproject.config.exe.debug.1636863026;com.crt.advproject.config.exe.debug.1636863026.;com.crt.advproject.gas.exe.debug.1882406128;com.crt.advproject.assembler.input.475352274">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include" removed="true"/>
-<includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include-fixed" removed="true"/>
-<includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/arm-none-eabi/include" removed="true"/>
 <includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/redlib/include"/>
 <includePath path="/usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/features/include"/>
 <definedSymbol symbol="__STDC__=1"/>
