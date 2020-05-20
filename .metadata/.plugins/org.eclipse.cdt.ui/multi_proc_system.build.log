@@ -1,33 +1,33 @@
-19:28:18 **** Build of configuration Debug for project multi_proc_system ****
+22:20:59 **** Build of configuration Debug for project multi_proc_system ****
 make -r -j2 all 
-Building file: ../src/cr_startup_lpc8xx.c
 Building file: ../src/crp.c
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
+Building file: ../src/cr_startup_lpc8xx.c
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc8xx.d" -MT"src/cr_startup_lpc8xx.o" -MT"src/cr_startup_lpc8xx.d" -o "src/cr_startup_lpc8xx.o" "../src/cr_startup_lpc8xx.c"
-Finished building: ../src/cr_startup_lpc8xx.c
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc8xx.d" -MT"src/cr_startup_lpc8xx.o" -MT"src/cr_startup_lpc8xx.d" -o "src/cr_startup_lpc8xx.o" "../src/cr_startup_lpc8xx.c"
 Finished building: ../src/crp.c
  
 Building file: ../src/main.c
- 
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/main.d" -MT"src/main.o" -MT"src/main.d" -o "src/main.o" "../src/main.c"
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main.d" -MT"src/main.o" -MT"src/main.d" -o "src/main.o" "../src/main.c"
+Finished building: ../src/cr_startup_lpc8xx.c
+ 
 Building file: ../src/mtb.c
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/mtb.d" -MT"src/mtb.o" -MT"src/mtb.d" -o "src/mtb.o" "../src/mtb.c"
-In file included from /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/chip.h:185:0,
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/mtb.d" -MT"src/mtb.o" -MT"src/mtb.d" -o "src/mtb.o" "../src/mtb.c"
+In file included from /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/chip.h:185,
                  from ../src/main.c:1:
 /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h: In function 'Chip_GPIO_SetPortDIRMask':
 /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: warning: '~' on a boolean expression [-Wbool-operation]
-Finished building: ../src/mtb.c
- 
   Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
                                                    ^
 /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: note: did you mean to use logical not?
   Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
                                                    ^
                                                    !
+Finished building: ../src/mtb.c
+ 
 Finished building: ../src/main.c
  
 Building target: multi_proc_system.axf
@@ -45,5 +45,5 @@ arm-none-eabi-size "multi_proc_system.axf"; # arm-none-eabi-objcopy -v -O binary
     644	      0	      0	    644	    284	multi_proc_system.axf
  
 
-19:28:20 Build Finished (took 2s.197ms)
+22:20:59 Build Finished. 0 errors, 1 warnings. (took 798ms)
 

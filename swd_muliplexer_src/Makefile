@@ -27,6 +27,7 @@ SIZEFLAGS	= -d
 OBJCOPYFLAGS	= -O ihex
 FLASHCMD	= mspdebug
 FLASHCMDFLAGS	= rf2500 "prog ${OUTDIR}/${PROJECT}.elf" "verify ${OUTDIR}/${PROJECT}.elf" "reset"
+RESETCMDFLAGS	= rf2500 "reset"
 
 all: ${OUTDIR} ${OUTDIR}/${PROJECT}.elf ${OUTDIR}/${PROJECT}.lst size ${OUTDIR}/${PROJECT}.a43
 flash_device: flash
@@ -48,6 +49,8 @@ ${OUTDIR}/${PROJECT}.a43:
 
 flash:
 	${FLASHCMD} ${FLASHCMDFLAGS}
+reset:
+	${FLASHCMD} ${RESETCMDFLAGS}
 
 clean:
 	rm -r ${OUTDIR} 

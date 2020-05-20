@@ -7,7 +7,10 @@ INDIR			= src
 OUTDIR			= gcc
 OBJ			= ${SRC:%.c=${OUTDIR}/%.o}
 
-TOOLCHAIN_PATH		= /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin
+TOOLCHAIN_PATH		= /usr/local/mcuxpressoide-11.1.1_3241/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.1.0.202001081728/tools/bin
+FLASHCMD_PATH		= /usr/local/mcuxpressoide-11.1.1_3241/ide/plugins/com.nxp.mcuxpresso.tools.bin.linux_11.1.0.202002241259/binaries
+SWDMULTIPLEX_DEV	= /dev/ttyUSB0
+
 TOOLCHAIN_PREFIX	= arm-none-eabi
 CPU			= cortex-m0
 INSTRSET		= thumb
@@ -26,18 +29,18 @@ LDFLAGS			= -nostdlib -mcpu=${CPU} -m${INSTRSET} -Xlinker -Map="${OUTDIR}/${PROJ
 OBJDUMPFLAGS		= -D -S
 SIZEFLAGS		= -d
 OBJCOPYFLAGS		= -O ihex
-FLASHCMD_PATH		= /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.bin.linux_10.3.1.201902141129/binaries
 FLASHCMD		= ${FLASHCMD_PATH}/crt_emu_cm_redlink
 FLASHCMDFLAGS		= -pLPC810 -vendor=NXP -flash-load-exec
 SWDMULTIPLEX_PORT_CMD	= stty
-SWDMULTIPLEX_PORT_PARAM	= -F /dev/ttyUSB0 2400 -parenb cs8 -cstopb -crtscts raw
-SWDMULTIPLEX_DEV	= /dev/ttyUSB0
-SWDMULTIPLEX_CMD	= echo -e -n "\x5" > ${SWDMULTIPLEX_DEV}
+SWDMULTIPLEX_PORT_PARAM	= -F ${SWDMULTIPLEX_DEV} 2400 -parenb cs8 -cstopb -crtscts raw
+SWDMULTIPLEX_CMD	= echo -e -n "\x9" > ${SWDMULTIPLEX_DEV}
 SWDMULTIPLEX_PARAM	= 
 
+#stty -F /dev/ttyUSB0 2400 -parenb cs8 -cstopb -crtscts raw
+#echo -e -n "\x55" > /dev/ttyUSB0
 
 all: ${OUTDIR} ${OUTDIR}/${PROJECT}.axf ${OUTDIR}/${PROJECT}.lst size ${OUTDIR}/${PROJECT}.a43
-#flash_device: flash	
+
 
 ${OUTDIR}:
 	@mkdir -p ${OUTDIR}
@@ -66,6 +69,13 @@ ${OUTDIR}/${PROJECT}.a43:
 flash:
 	@echo 'Flashing file: ${PROJECT}.axf'
 	${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}.axf
+	@echo ' '
+
+multiplex:
+	@echo 'Configuring serial port ...'
+	${SWDMULTIPLEX_PORT_CMD} ${SWDMULTIPLEX_PORT_PARAM}
+	@echo 'Multiplexing SWD to target ...'
+	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM}
 	@echo ' '
 
 clean:

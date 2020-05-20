@@ -8,49 +8,49 @@
 						<entry kind="includePath" name="/lpc_chip_8xx/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="macro" name="CORE_M0PLUS" value=""/>
-						<entry kind="macro" name="DEBUG" value=""/>
-						<entry kind="macro" name="__CODE_RED" value=""/>
-						<entry kind="macro" name="__LPC8XX__" value=""/>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
 						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
-						<entry kind="macro" name="__MTB_DISABLE" value=""/>
-						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
 					</resource>
 					<resource project-relative-path="src/crp.c">
 						<entry kind="includePath" name="/lpc_chip_8xx/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="macro" name="CORE_M0PLUS" value=""/>
-						<entry kind="macro" name="DEBUG" value=""/>
-						<entry kind="macro" name="__CODE_RED" value=""/>
-						<entry kind="macro" name="__LPC8XX__" value=""/>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
 						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
-						<entry kind="macro" name="__MTB_DISABLE" value=""/>
-						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
 					</resource>
 					<resource project-relative-path="src/mtb.c">
 						<entry kind="includePath" name="/lpc_chip_8xx/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="macro" name="CORE_M0PLUS" value=""/>
-						<entry kind="macro" name="DEBUG" value=""/>
-						<entry kind="macro" name="__CODE_RED" value=""/>
-						<entry kind="macro" name="__LPC8XX__" value=""/>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
 						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
-						<entry kind="macro" name="__MTB_DISABLE" value=""/>
-						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
 					</resource>
 					<resource project-relative-path="src/cr_startup_lpc8xx.c">
 						<entry kind="includePath" name="/lpc_chip_8xx/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="macro" name="CORE_M0PLUS" value=""/>
-						<entry kind="macro" name="DEBUG" value=""/>
-						<entry kind="macro" name="__CODE_RED" value=""/>
-						<entry kind="macro" name="__LPC8XX__" value=""/>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
 						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
-						<entry kind="macro" name="__MTB_DISABLE" value=""/>
-						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
 					</resource>
 					<resource project-relative-path="src/multi_proc_system.c">
 						<entry kind="includePath" name="/lpc_chip_8xx/inc">
