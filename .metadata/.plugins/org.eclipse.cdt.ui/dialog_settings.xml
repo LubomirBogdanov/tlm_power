@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="${workspace_loc:/lpc_chip_8xx/inc}" key="org.eclipse.cdt.utils.ui.controls.FileListControl"/>
+	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value="${workspace_loc:/lpc_chip_8xx/inc}"/>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>
 	<section name="OptionalMessageDialog.hide.">
-		<item value="true" key="askReindex"/>
-		<item value="0" key="askReindex.detail"/>
+		<item key="askReindex" value="true"/>
+		<item key="askReindex.detail" value="0"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>

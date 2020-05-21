@@ -346,7 +346,7 @@ STATIC INLINE void Chip_GPIO_SetPortDIR(LPC_GPIO_T *pGPIO, uint8_t port, uint8_t
  */
 STATIC INLINE void Chip_GPIO_SetPortDIRMask(LPC_GPIO_T *pGPIO, uint8_t port, uint8_t pinMask, bool outMask)
 {
-	Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
+	Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & !outMask);
 	Chip_GPIO_SetPortDIROutput(pGPIO, port, pinMask & outMask);
 }
 

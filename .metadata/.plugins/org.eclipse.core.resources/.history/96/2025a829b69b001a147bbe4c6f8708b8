@@ -1,0 +1,20 @@
+#include "chip.h"
+
+int main(void) {
+	volatile unsigned long i;
+
+	LPC_SYSCTL->SYSAHBCLKCTRL |= SYSCTL_CLOCK_SWM;
+	LPC_SYSCTL->SYSAHBCLKCTRL |= SYSCTL_CLOCK_GPIO;
+	LPC_GPIO_PORT->DIR[0] |= 1UL << 4;
+	//LPC_GPIO_PORT->DIR[0] |= 1UL << 4;
+	LPC_GPIO_PORT->CLR[0] = (1 << 4);
+
+	while (1) {
+		LPC_GPIO_PORT->SET[0] = (1 << 4);
+		for(i = 0; i < 20000; i++){ }
+		LPC_GPIO_PORT->CLR[0] = (1 << 4);
+		for(i = 0; i < 20000; i++){ }
+	}
+
+	return 0;
+}

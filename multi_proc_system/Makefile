@@ -1,7 +1,8 @@
+MCU_INDEX		= 0
 #The name of the top-level source file
 PROJECT			= main
 #Add additional files here. The ${PROJECT}.c should be at the end.
-SRC			= cr_startup_lpc8xx.c crp.c mtb.c ${PROJECT}.c   
+SRC			= cr_startup_lpc8xx.c crp.c mtb.c ${PROJECT}_${MCU_INDEX}.c   
 
 INDIR			= src
 OUTDIR			= gcc
@@ -10,6 +11,8 @@ OBJ			= ${SRC:%.c=${OUTDIR}/%.o}
 TOOLCHAIN_PATH		= /usr/local/mcuxpressoide-11.1.1_3241/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.1.0.202001081728/tools/bin
 FLASHCMD_PATH		= /usr/local/mcuxpressoide-11.1.1_3241/ide/plugins/com.nxp.mcuxpresso.tools.bin.linux_11.1.0.202002241259/binaries
 SWDMULTIPLEX_DEV	= /dev/ttyUSB0
+SWD_CHANNEL		= 0
+PROC_LIST		= 0 1 2 3 4 5 6 7 8 9
 
 TOOLCHAIN_PREFIX	= arm-none-eabi
 CPU			= cortex-m0
@@ -33,22 +36,23 @@ FLASHCMD		= ${FLASHCMD_PATH}/crt_emu_cm_redlink
 FLASHCMDFLAGS		= -pLPC810 -vendor=NXP -flash-load-exec
 SWDMULTIPLEX_PORT_CMD	= stty
 SWDMULTIPLEX_PORT_PARAM	= -F ${SWDMULTIPLEX_DEV} 2400 -parenb cs8 -cstopb -crtscts raw
-SWDMULTIPLEX_CMD	= echo -e -n "\x9" > ${SWDMULTIPLEX_DEV}
-SWDMULTIPLEX_PARAM	= 
+SWDMULTIPLEX_CMD	= echo
+SWDMULTIPLEX_PARAM	= -e -n 
 
 #stty -F /dev/ttyUSB0 2400 -parenb cs8 -cstopb -crtscts raw
-#echo -e -n "\x55" > /dev/ttyUSB0
+#echo -e -n "\x35" > /dev/ttyUSB0
 
-all: ${OUTDIR} ${OUTDIR}/${PROJECT}.axf ${OUTDIR}/${PROJECT}.lst size ${OUTDIR}/${PROJECT}.a43
+.PHONY: ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf ${OBJ} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.lst
+all: ${OUTDIR} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf ${OUTDIR}/${PROJECT}_${MCU_INDEX}.lst size ${OUTDIR}/${PROJECT}_${MCU_INDEX}.a43
 
 
 ${OUTDIR}:
 	@mkdir -p ${OUTDIR}
 	
-${OUTDIR}/${PROJECT}.axf: ${OBJ}
+${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf: ${OBJ}
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	${CC} ${LDFLAGS} -o "${OUTDIR}/${PROJECT}.axf" ${SRC:%.c=${OUTDIR}/%.o} 
+	${CC} ${LDFLAGS} -o "${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf" ${SRC:%.c=${OUTDIR}/%.o} 
 	@echo ' '
 
 ${OBJ}: ${SRC:${INDIR}/%.c}
@@ -58,25 +62,37 @@ ${OBJ}: ${SRC:${INDIR}/%.c}
 	@echo ' '
 	
 ${OUTDIR}/${PROJECT}.lst: 
-	${OBJDUMP} ${OBJDUMPFLAGS} ${OUTDIR}/${PROJECT}.axf > ${OUTDIR}/${PROJECT}.lst
+	${OBJDUMP} ${OBJDUMPFLAGS} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf > ${OUTDIR}/${PROJECT}_${MCU_INDEX}.lst
 
 size:
-	${SIZE} ${SIZEFLAGS} ${OUTDIR}/${PROJECT}.axf
+	${SIZE} ${SIZEFLAGS} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf
 	
-${OUTDIR}/${PROJECT}.a43:
-	${OBJCOPY} ${OBJCOPYFLAGS} ${OUTDIR}/${PROJECT}.axf ${OUTDIR}/${PROJECT}.a43
+${OUTDIR}/${PROJECT}_${MCU_INDEX}.a43:
+	${OBJCOPY} ${OBJCOPYFLAGS} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf ${OUTDIR}/${PROJECT}_${MCU_INDEX}.a43
 
 flash:
-	@echo 'Flashing file: ${PROJECT}.axf'
-	${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}.axf
+	${MAKE}
+	@echo "Multiplexing SWD to target ${MCU_INDEX} ..."
+	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM} "${MCU_INDEX}" > ${SWDMULTIPLEX_DEV}
+	@echo 'Flashing file: ${PROJECT}_${MCU_INDEX}.axf'
+	${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf
+	@echo ' '
+
+flash_all:
+	@echo 'Flashing system ...'
+	@for i in ${PROC_LIST};			\
+	  do 					\
+	         ${MAKE} flash MCU_INDEX=$$i; 	\
+	done
 	@echo ' '
 
 multiplex:
 	@echo 'Configuring serial port ...'
 	${SWDMULTIPLEX_PORT_CMD} ${SWDMULTIPLEX_PORT_PARAM}
 	@echo 'Multiplexing SWD to target ...'
-	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM}
+	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM} "${SWD_CHANNEL}" > ${SWDMULTIPLEX_DEV}
 	@echo ' '
+
 
 clean:
 	@echo 'Removing directory: ${OUTDIR}'

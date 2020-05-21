@@ -1,2 +1,3 @@
 delete.wrong.sdk=true
 eclipse.preferences.version=1
+sdk.paths.pref=/home/lbogdanov/mcuxpresso/02/SDKPackages\:/home/lbogdanov/mcuxpresso/01/SDKPackages\:\:
