@@ -10,10 +10,10 @@ int main(void) {
 	LPC_GPIO_PORT->CLR[0] = (1 << 4);
 
 	while (1) {
-		LPC_GPIO_PORT->SET[0] = (1 << 4);
-		for(i = 0; i < 10000; i++){ }
-		LPC_GPIO_PORT->CLR[0] = (1 << 4);
-		for(i = 0; i < 10000; i++){ }
+//		LPC_GPIO_PORT->SET[0] = (1 << 4);
+//		for(i = 0; i < 10000; i++){ }
+//		LPC_GPIO_PORT->CLR[0] = (1 << 4);
+//		for(i = 0; i < 10000; i++){ }
 	}
 
 	return 0;

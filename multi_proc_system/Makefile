@@ -11,7 +11,6 @@ OBJ			= ${SRC:%.c=${OUTDIR}/%.o}
 TOOLCHAIN_PATH		= /usr/local/mcuxpressoide-11.1.1_3241/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.1.0.202001081728/tools/bin
 FLASHCMD_PATH		= /usr/local/mcuxpressoide-11.1.1_3241/ide/plugins/com.nxp.mcuxpresso.tools.bin.linux_11.1.0.202002241259/binaries
 SWDMULTIPLEX_DEV	= /dev/ttyUSB0
-SWD_CHANNEL		= 0
 PROC_LIST		= 0 1 2 3 4 5 6 7 8 9
 
 TOOLCHAIN_PREFIX	= arm-none-eabi
@@ -72,8 +71,7 @@ ${OUTDIR}/${PROJECT}_${MCU_INDEX}.a43:
 
 flash:
 	${MAKE}
-	@echo "Multiplexing SWD to target ${MCU_INDEX} ..."
-	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM} "${MCU_INDEX}" > ${SWDMULTIPLEX_DEV}
+	${MAKE} multiplex
 	@echo 'Flashing file: ${PROJECT}_${MCU_INDEX}.axf'
 	${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf
 	@echo ' '
@@ -89,8 +87,8 @@ flash_all:
 multiplex:
 	@echo 'Configuring serial port ...'
 	${SWDMULTIPLEX_PORT_CMD} ${SWDMULTIPLEX_PORT_PARAM}
-	@echo 'Multiplexing SWD to target ...'
-	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM} "${SWD_CHANNEL}" > ${SWDMULTIPLEX_DEV}
+	@echo 'Multiplexing SWD to target ${MCU_INDEX}...'
+	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM} "${MCU_INDEX}" > ${SWDMULTIPLEX_DEV}
 	@echo ' '
 
 
