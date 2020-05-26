@@ -1,12 +1,15 @@
 #include "chip.h"
 
+#ifdef MCU_TARGET_7
+
 int main(void) {
 	volatile unsigned long i;
 
 	LPC_SYSCTL->SYSAHBCLKCTRL |= SYSCTL_CLOCK_SWM;
 	LPC_SYSCTL->SYSAHBCLKCTRL |= SYSCTL_CLOCK_GPIO;
 	LPC_GPIO_PORT->DIR[0] |= 1UL << 4;
-	//LPC_GPIO_PORT->DIR[0] |= 1UL << 4;
+	LPC_GPIO_PORT->DIR[0] &= ~(1UL << 0);
+	LPC_GPIO_PORT->DIR[0] &= ~(1UL << 1);
 	LPC_GPIO_PORT->CLR[0] = (1 << 4);
 
 	while (1) {
@@ -18,3 +21,5 @@ int main(void) {
 
 	return 0;
 }
+
+#endif

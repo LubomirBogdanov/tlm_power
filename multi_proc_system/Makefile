@@ -25,7 +25,7 @@ PREPROCESSOR		= -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFE
 IPATH			= ../lpc_chip_8xx/inc
 OPTFLAGS		= -O0 -fno-common -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -specs=redlib.specs -MMD -MP -MF"${@:${OUTDIR}/%.o=${OUTDIR}/%.d}" -MT"${@:${OUTDIR}/%.o=${OUTDIR}/%.o}" -MT"${@:${OUTDIR}/%.o=${OUTDIR}/%.d}"
 DEBUGFLAGS		= -g3
-CFLAGS          	= ${PREPROCESSOR} -I${IPATH} -mcpu=${CPU} -m${INSTRSET} ${OPTFLAGS} ${DEBUGFLAGS} 
+CFLAGS          	= ${PREPROCESSOR} -I${IPATH} -mcpu=${CPU} -m${INSTRSET} ${OPTFLAGS} ${DEBUGFLAGS} -DMCU_TARGET_${MCU_INDEX}
 LINKER_FILE		= ${PROJECT}.ld
 LDFLAGS			= -nostdlib -mcpu=${CPU} -m${INSTRSET} -Xlinker -Map="${OUTDIR}/${PROJECT}.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -T "${LINKER_FILE}"
 OBJDUMPFLAGS		= -D -S
