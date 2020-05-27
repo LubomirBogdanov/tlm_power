@@ -2,6 +2,75 @@
 
 #ifdef MCU_TARGET_0
 
+const uint32_t OscRateIn = 0;
+const uint32_t ExtRateIn = 0;
+
+static I2CM_XFER_T  			i2cmXferRec;
+#define I2C_CLK_DIVIDER         (40)
+#define I2C_BITRATE             (100000)
+#define I2C_ADDR_7BIT           (0x60)
+#define TICKRATE_HZ             (1000)
+
+static volatile uint32_t ticks;
+static uint8_t txData[16];
+static uint8_t rxData[16];
+
+/* Function to setup and execute I2C transfer request */
+static void SetupXferRecAndExecute(uint8_t devAddr, uint8_t *txBuffPtr, uint16_t txSize, uint8_t *rxBuffPtr, uint16_t rxSize){
+	i2cmXferRec.slaveAddr = devAddr;
+	i2cmXferRec.status = 0;
+	i2cmXferRec.txSz = txSize;
+	i2cmXferRec.rxSz = rxSize;
+	i2cmXferRec.txBuff = txBuffPtr;
+	i2cmXferRec.rxBuff = rxBuffPtr;
+
+	Chip_I2CM_XferBlocking(LPC_I2C, &i2cmXferRec);
+}
+
+/* Function sends update to the I/O expander */
+static void sendI2CMaster(uint16_t i2c_addr, uint32_t ledStateOut){
+	int index = 0;
+
+	txData[index++] = (uint8_t) 0x16;							/* I2C device regAddr */
+	txData[index++] = (uint8_t) ((ledStateOut)     & 0xff);		/* I2C device regVal */
+	txData[index++] = (uint8_t) ((ledStateOut >> 8)  & 0xff);		/* I2C device regVal */
+	txData[index++] = (uint8_t) ((ledStateOut >> 16) & 0xff);		/* I2C device regVal */
+	txData[index++] = (uint8_t) ((ledStateOut >> 24) & 0xff);		/* I2C device regVal */
+
+	SetupXferRecAndExecute(i2c_addr, txData, 5, rxData, 0);
+}
+
+void SysTick_Handler(void){
+	ticks++;
+}
+
+int main(void){
+	SystemCoreClockUpdate();
+	Chip_GPIO_Init(LPC_GPIO_PORT);
+
+	Chip_Clock_EnablePeriphClock(SYSCTL_CLOCK_SWM);
+	Chip_SWM_MovablePinAssign(SWM_I2C_SDA_IO, 0);
+	Chip_SWM_MovablePinAssign(SWM_I2C_SCL_IO, 1);
+	Chip_IOCON_PinSetI2CMode(LPC_IOCON, IOCON_PIO0, PIN_I2CMODE_FASTPLUS);
+	Chip_IOCON_PinSetI2CMode(LPC_IOCON, IOCON_PIO1, PIN_I2CMODE_FASTPLUS);
+	Chip_Clock_DisablePeriphClock(SYSCTL_CLOCK_SWM);
+
+	Chip_I2C_Init(LPC_I2C);
+	Chip_I2C_SetClockDiv(LPC_I2C, I2C_CLK_DIVIDER);
+	Chip_I2CM_SetBusSpeed(LPC_I2C, I2C_BITRATE);
+	Chip_I2CM_Enable(LPC_I2C);
+
+	NVIC_DisableIRQ(I2C_IRQn);
+	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
+
+	while(1) {
+		__WFI();
+		sendI2CMaster(I2C_ADDR_7BIT, 0x77);
+	}
+}
+
+
+/*
 int main(void) {
 	volatile unsigned long i;
 
@@ -62,7 +131,7 @@ int main(void) {
 
 	return 0;
 }
-
+ */
 #endif
 
 /*
@@ -84,4 +153,4 @@ int main(void) {
 
 	return 0;
 }
-*/
+ */
