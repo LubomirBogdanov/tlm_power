@@ -52,7 +52,7 @@ int main(void){
 	LPC_SYSCON->PRESETCTRL &= ~(1 << 6);
 	LPC_SYSCON->PRESETCTRL |= 1 << 6;
 
-	LPC_I2C->CLKDIV = 20;
+	LPC_I2C->CLKDIV = 20; //114 kHz
 	LPC_I2C->MSTTIME = 0x01; //3 clocks SCL(high), 2 clocks SCL(low), do not use logic operators here
 	LPC_I2C->CFG |= 0x01; //Enable master
 
