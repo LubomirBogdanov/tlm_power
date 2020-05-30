@@ -2,7 +2,7 @@
 
 #ifdef MCU_TARGET_1
 
-
+/*
 static I2CM_XFER_T  		i2cmXferRec;
 #define SLAVE_ADDRESS       (0x60)
 
@@ -134,11 +134,11 @@ int main(void)
 		SetupXferRecAndExecute(SLAVE_ADDRESS, tx_buff, 16, rx_buff, 16);
 	}
 }
+*/
 
 
 
 
-/*
 const uint32_t OscRateIn = 0;
 const uint32_t ExtRateIn = 0;
 
@@ -184,10 +184,10 @@ void I2C_IRQHandler(void){
 
 	irq_status = LPC_I2C->INTSTAT;
 
-	while (irq_status & (I2C_INTENSET_SLVPENDING | I2C_INTENSET_SLVDESEL)) {
+	//while (irq_status & (I2C_INTENSET_SLVPENDING | I2C_INTENSET_SLVDESEL)) {
 		//Chip_I2CS_XferHandler(LPC_I2C, &i2csCallBacks);
 		if(irq_status & I2C_INTENSET_SLVDESEL){
-			LPC_I2C->STAT &= ~I2C_STAT_SLVDESEL;
+			LPC_I2C->STAT = I2C_STAT_SLVDESEL;
 			//Slave is done
 		}
 		else{
@@ -200,6 +200,7 @@ void I2C_IRQHandler(void){
 
 			case I2C_STAT_SLVCODE_RX:		// Data byte received
 				slave_data = LPC_I2C->SLVDAT & I2C_SLVDAT_DATAMASK;
+				//LPC_I2C->STAT = I2C_STAT_SLVDESEL;
 				break;
 
 			case I2C_STAT_SLVCODE_TX:		// Get byte that needs to be sent
@@ -209,7 +210,7 @@ void I2C_IRQHandler(void){
 		}
 
 		irq_status = LPC_I2C->INTSTAT;
-	}
+	//}
 
 	LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
 }
@@ -255,6 +256,6 @@ int main(void){
 		delay_ms(1);
 	}
 }
-*/
+
 
 #endif
