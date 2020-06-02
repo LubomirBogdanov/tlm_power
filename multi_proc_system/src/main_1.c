@@ -107,8 +107,8 @@ void I2C_IRQHandler(void)
 
 int main(void)
 {
-	uint8_t tx_buff[16];
-	uint8_t rx_buff[16];
+	uint8_t tx_buff[2];
+	uint8_t rx_buff[2];
 
 	SystemCoreClockUpdate();
 
@@ -121,8 +121,8 @@ int main(void)
 	LPC_SWM->PINASSIGN[8] &= 0xFFFFFF00;
 	LPC_SWM->PINASSIGN[7] |= 0x01 << 24; //P0.1 = I2C_SDA
 	LPC_SWM->PINASSIGN[8] |= 0x00; //P0.0 = I2C_SCL
-	LPC_IOCON->PIO0[0] |= PIN_OD_MASK;
-	LPC_IOCON->PIO0[1] |= PIN_OD_MASK;
+//	LPC_IOCON->PIO0[0] |= PIN_OD_MASK;
+//	LPC_IOCON->PIO0[1] |= PIN_OD_MASK;
 
 	// Setup I2C, master, and slave
 	setupI2CMaster();
@@ -134,7 +134,7 @@ int main(void)
 		SetupXferRecAndExecute(SLAVE_ADDRESS, tx_buff, 16, rx_buff, 16);
 	}
 }
-*/
+ */
 
 
 
@@ -184,23 +184,21 @@ void I2C_IRQHandler(void){
 
 	irq_status = LPC_I2C->INTSTAT;
 
-	//while (irq_status & (I2C_INTENSET_SLVPENDING | I2C_INTENSET_SLVDESEL)) {
-		//Chip_I2CS_XferHandler(LPC_I2C, &i2csCallBacks);
-		if(irq_status & I2C_INTENSET_SLVDESEL){
-			LPC_I2C->STAT = I2C_STAT_SLVDESEL;
-			//Slave is done
-		}
-		else{
+	if(!(LPC_I2C->STAT & I2C_STAT_SLVSEL)){
+		if(LPC_I2C->STAT & I2C_STAT_SLVPENDING){
 			slave_status = LPC_I2C->STAT & I2C_STAT_SLVSTATE >> 9;
 
 			switch (slave_status) {
 			case I2C_STAT_SLVCODE_ADDR:		// Slave address received
 				requested_slave_address = LPC_I2C->STAT & I2C_STAT_SLVIDX >> 12;
+				LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
 				break;
 
 			case I2C_STAT_SLVCODE_RX:		// Data byte received
 				slave_data = LPC_I2C->SLVDAT & I2C_SLVDAT_DATAMASK;
 				//LPC_I2C->STAT = I2C_STAT_SLVDESEL;
+				//LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
+				LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
 				break;
 
 			case I2C_STAT_SLVCODE_TX:		// Get byte that needs to be sent
@@ -208,17 +206,46 @@ void I2C_IRQHandler(void){
 				break;
 			}
 		}
+	}
 
-		irq_status = LPC_I2C->INTSTAT;
-	//}
+	/*if(irq_status & I2C_INTENSET_SLVDESEL){
+		LPC_I2C->STAT = I2C_STAT_SLVDESEL;
+		//Slave is done
+		LPC_I2C->SLVCTL = I2C_SLVCTL_SLVNACK;
+	}
+	else{
+		slave_status = LPC_I2C->STAT & I2C_STAT_SLVSTATE >> 9;
 
-	LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
+		switch (slave_status) {
+		case I2C_STAT_SLVCODE_ADDR:		// Slave address received
+			requested_slave_address = LPC_I2C->STAT & I2C_STAT_SLVIDX >> 12;
+			LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
+			break;
+
+		case I2C_STAT_SLVCODE_RX:		// Data byte received
+			slave_data = LPC_I2C->SLVDAT & I2C_SLVDAT_DATAMASK;
+			//LPC_I2C->STAT = I2C_STAT_SLVDESEL;
+			//LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
+			LPC_I2C->SLVCTL = I2C_SLVCTL_SLVNACK;
+			break;
+
+		case I2C_STAT_SLVCODE_TX:		// Get byte that needs to be sent
+			LPC_I2C->SLVDAT = slave_data;
+			break;
+		}
+
+
+	}
+	*/
+
 }
 
 int main(void){
 	uint32_t ret = 0;
 
 	SystemCoreClockUpdate();
+
+	while(1){ }
 
 	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_SWM;
 	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_GPIO;
@@ -231,6 +258,8 @@ int main(void){
 	LPC_SWM->PINASSIGN[8] |= 0x00; //P0.0 = I2C_SCL
 	LPC_IOCON->PIO0[0] |= PIN_OD_MASK;
 	LPC_IOCON->PIO0[1] |= PIN_OD_MASK;
+
+
 
 	LPC_SYSCON->PRESETCTRL &= ~(1 << 6);
 	LPC_SYSCON->PRESETCTRL |= 1 << 6;
@@ -248,12 +277,12 @@ int main(void){
 
 	NVIC_EnableIRQ(I2C_IRQn);
 
-	LPC_I2C->CFG |= 0x03; //Enable i2c master & slave
+	LPC_I2C->CFG |= 0x02; //Enable i2c master & slave
 
-	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
+	//	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
 
 	while(1) {
-		delay_ms(1);
+		//delay_ms(1);
 	}
 }
 
