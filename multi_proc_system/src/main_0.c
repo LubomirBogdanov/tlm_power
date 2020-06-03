@@ -5,7 +5,7 @@
 const uint32_t OscRateIn = 0;
 const uint32_t ExtRateIn = 0;
 
-#define I2C_ADDR_7BIT           (0x50)
+#define I2C_ADDR_7BIT           (0x60)
 #define TICKRATE_HZ             (1000)
 
 static volatile uint32_t ticks;
@@ -175,8 +175,7 @@ void user_gpio_clear(void){
 }
 
 int main(void){
-	uint8_t i;
-	uint8_t slv_data_tx[3] = {0x01, 0x33, 0x55};
+	uint8_t slv_data_tx[4] = {0x33, 0x7f, 0x55, 0x3e};
 	uint8_t slv_data_rx[4] = {0x00, 0x00, 0x00, 0x00};
 
 	SystemCoreClockUpdate();
@@ -188,21 +187,18 @@ int main(void){
 	NVIC_DisableIRQ(I2C_IRQn);
 	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
 
-	user_i2c_master_write(I2C_ADDR_7BIT, 3, slv_data_tx);
-	delay_ms(100);
-
 	while(1) {
 		user_i2c_master_write(I2C_ADDR_7BIT, 2, slv_data_tx);
-		user_i2c_master_read(I2C_ADDR_7BIT, 4, slv_data_rx);
+		//user_i2c_master_read(I2C_ADDR_7BIT, 1, slv_data_rx);
 
-		if(slv_data_tx[2] != slv_data_rx[0]){
+		/*if(slv_data_tx[0] != slv_data_rx[0]){
 			user_gpio_set();
 		}
 		else{
 			user_gpio_clear();
-		}
+		}*/
 
-		delay_ms(1000);
+		delay_ms(1);
 	}
 }
 #endif
