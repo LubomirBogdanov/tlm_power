@@ -7,10 +7,12 @@ const uint32_t ExtRateIn = 0;
 
 #define I2C_ADDR_7BIT           	0x60
 #define I2C_RX_BUFF					16
-
+#define I2C_TX_BUFF					16
 
 volatile uint8_t slave_rx_buff_index;
 volatile uint8_t slave_rx_buff[I2C_RX_BUFF];
+volatile uint8_t slave_tx_buff_index;
+volatile uint8_t slave_tx_buff[I2C_RX_BUFF];
 volatile uint8_t slave_data_ready;
 volatile uint8_t slave_rx_buff_len;
 
@@ -24,6 +26,7 @@ void I2C_IRQHandler(void){
 		LPC_I2C->STAT = I2C_STAT_SLVDESEL; //Clear status bit
 		slave_rx_buff_len = slave_rx_buff_index;
 		slave_rx_buff_index = 0;
+		slave_tx_buff_index = 0;
 		if(slave_rx_buff_len != 0){
 			slave_data_ready = 1;
 		}
@@ -40,12 +43,15 @@ void I2C_IRQHandler(void){
 			slave_rx_buff[slave_rx_buff_index] = LPC_I2C->SLVDAT & I2C_SLVDAT_DATAMASK;
 			slave_rx_buff_index++;
 			if(slave_rx_buff_index >= I2C_RX_BUFF){
-				slave_rx_buff_index--;
+				slave_rx_buff_index = 0;
 			}
 			break;
 
 		case I2C_STAT_SLVCODE_TX:		// Get byte that needs to be sent
-			//LPC_I2C->SLVDAT = slave_data;
+			LPC_I2C->SLVDAT = slave_tx_buff[slave_tx_buff_index++];
+			if(slave_tx_buff_index >= I2C_TX_BUFF){
+				slave_tx_buff_index = 0;
+			}
 			break;
 		}
 
@@ -55,6 +61,7 @@ void I2C_IRQHandler(void){
 
 void user_i2c_init(void){
 	slave_rx_buff_index = 0;
+	slave_tx_buff_index = 0;
 	slave_data_ready = 0;
 	slave_rx_buff_len = 0;
 
@@ -120,6 +127,11 @@ int main(void){
 
 	SystemCoreClockUpdate();
 
+	slave_tx_buff[0] = 0x30;
+	slave_tx_buff[1] = 0x31;
+	slave_tx_buff[2] = 0x32;
+	slave_tx_buff[3] = 0x33;
+
 	user_i2c_init();
 	user_i2c_set_slave_address(I2C_ADDR_7BIT);
 	user_i2c_enable_slave();
@@ -132,6 +144,7 @@ int main(void){
 		}
 	}
 }
+
 
 /*
 int main(void){
@@ -169,7 +182,7 @@ int main(void){
 		}
 	}
 }
- */
+*/
 
 
 #endif

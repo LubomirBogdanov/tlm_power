@@ -6,7 +6,9 @@ const uint32_t OscRateIn = 0;
 const uint32_t ExtRateIn = 0;
 
 #define I2C_ADDR_7BIT           (0x60)
+#define I2C_ACK_TIMEOUT_MS		1
 #define TICKRATE_HZ             (1000)
+
 
 static volatile uint32_t ticks;
 
@@ -50,6 +52,22 @@ void user_i2c_clear_status(void){
 	LPC_I2C->STAT = (I2C_STAT_MSTRARBLOSS | I2C_STAT_MSTSTSTPERR);
 }
 
+uint32_t timeout_tick;
+
+void user_i2c_timeout_start(void){
+	ticks = 0;
+}
+
+uint8_t user_i2c_timeout(void){
+	if(ticks == I2C_ACK_TIMEOUT_MS){
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
+
+
 /*!
  * \brief
  *
@@ -61,7 +79,12 @@ uint8_t user_i2c_master_ack_get(void){
 	uint8_t slave_ack = 0;
 	uint32_t master_status = 0;
 
-	while(!(LPC_I2C->STAT & I2C_STAT_MSTPENDING)) { }
+	user_i2c_timeout_start();
+	while(!(LPC_I2C->STAT & I2C_STAT_MSTPENDING)) {
+		if(user_i2c_timeout()){
+			goto end;
+		}
+	}
 
 	master_status = LPC_I2C->STAT;
 
@@ -93,6 +116,7 @@ uint8_t user_i2c_master_ack_get(void){
 
 	user_i2c_clear_status();
 
+end:
 	return slave_ack;
 }
 
@@ -187,9 +211,11 @@ int main(void){
 	NVIC_DisableIRQ(I2C_IRQn);
 	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
 
+	user_gpio_set();
+
 	while(1) {
-		user_i2c_master_write(I2C_ADDR_7BIT, 2, slv_data_tx);
-		//user_i2c_master_read(I2C_ADDR_7BIT, 1, slv_data_rx);
+		//user_i2c_master_write(I2C_ADDR_7BIT, 2, slv_data_tx);
+		user_i2c_master_read(I2C_ADDR_7BIT, 4, slv_data_rx);
 
 		/*if(slv_data_tx[0] != slv_data_rx[0]){
 			user_gpio_set();
