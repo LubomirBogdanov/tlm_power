@@ -23,7 +23,7 @@ int main(void){
 		//user_gpio_set();
 		for(uint32_t i = 0; i < 1000; i++){
 			user_i2c_master_write(MCU_TARGET_1_ADDRESS, 4, slv_data_tx);
-			user_delay_ms(10);
+			user_delay_ms(1);
 		}
 		//user_gpio_clear();
 		//user_delay_ms(1000);
@@ -31,7 +31,7 @@ int main(void){
 		//user_gpio_set();
 		for(uint32_t i = 0; i < 1000; i++){
 			user_i2c_master_read(MCU_TARGET_1_ADDRESS, 4, slv_data_rx);
-			user_delay_ms(10);
+			user_delay_ms(1);
 		}
 		//user_gpio_clear();
 		//user_delay_ms(1000);
