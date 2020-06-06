@@ -12,5 +12,6 @@
 #include "chip.h"
 #include "user_gpio.h"
 #include "user_delay.h"
+#include "user_i2c.h"
 
 #endif /* MAIN_H_ */
