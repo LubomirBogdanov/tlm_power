@@ -62,6 +62,8 @@ void user_i2c_clear_status(void);
 void user_i2c_timeout_start(void);
 uint8_t user_i2c_timeout(void);
 uint8_t user_i2c_master_ack_get(void);
+uint8_t user_i2c_monitor_bus_idle(void);
+void user_i2c_monitor_wait_bus_idle(void);
 
 
 #endif /* USER_I2C_H_ */

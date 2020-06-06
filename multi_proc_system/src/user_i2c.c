@@ -86,7 +86,7 @@ void user_i2c_init(void){
 }
 
 void user_i2c_enable_master(void){
-	LPC_I2C->CFG |= 0x01; //Enable master
+	LPC_I2C->CFG |= I2C_CFG_MSTEN;
 }
 
 void user_i2c_clear_status(void){
@@ -175,6 +175,8 @@ uint8_t user_i2c_master_write(uint8_t slave_addr, uint16_t slave_data_len, uint8
 	uint8_t err = 0;
 	uint16_t i;
 
+	user_i2c_monitor_wait_bus_idle();
+
 	user_i2c_clear_status();
 
 	LPC_I2C->MSTDAT = slave_addr << 1; //Make 8-bit address
@@ -200,6 +202,8 @@ uint8_t user_i2c_master_write(uint8_t slave_addr, uint16_t slave_data_len, uint8
 uint8_t user_i2c_master_read(uint8_t slave_addr, uint16_t slave_data_len, uint8_t *slave_data){
 	uint8_t err = 0;
 	uint16_t i;
+
+	user_i2c_monitor_wait_bus_idle();
 
 	user_i2c_clear_status();
 
@@ -228,11 +232,11 @@ uint8_t user_i2c_master_read(uint8_t slave_addr, uint16_t slave_data_len, uint8_
 }
 
 void user_i2c_enable_monitor(void){
-	LPC_I2C->CFG |= 0x04; //Enable monitor
+	LPC_I2C->CFG |= I2C_CFG_MONEN;
 }
 
 void user_i2c_enable_slave(void){
-	LPC_I2C->CFG |= 0x02; //Enable i2c slave
+	LPC_I2C->CFG |= I2C_CFG_SLVEN;
 }
 
 void user_i2c_enable_slave_interrupts(void){
@@ -260,4 +264,18 @@ uint8_t user_i2c_slave_data_read(uint8_t *slave_data_buff){
 	slave_data_ready = 0;
 
 	return slave_rx_buff_len;
+}
+
+uint8_t user_i2c_monitor_bus_idle(void){
+	uint32_t bus_status = LPC_I2C->STAT & I2C_STAT_MONACTIVE;
+	bus_status = (bus_status >> 18) & 0x01;
+	bus_status ^= 0x01;
+
+	return bus_status;
+}
+
+void user_i2c_monitor_wait_bus_idle(void){
+	while(!user_i2c_monitor_bus_idle()){
+		user_delay_ms(1);
+	}
 }
