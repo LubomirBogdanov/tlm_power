@@ -1,28 +1,11 @@
-#include "chip.h"
+#include "main.h"
 
 #ifdef MCU_TARGET_0
 
-const uint32_t OscRateIn = 0;
-const uint32_t ExtRateIn = 0;
+extern volatile uint32_t user_ticks;
 
 #define I2C_ADDR_7BIT           (0x60)
 #define I2C_ACK_TIMEOUT_MS		1
-#define TICKRATE_HZ             (1000)
-
-
-static volatile uint32_t ticks;
-
-void SysTick_Handler(void){
-	ticks++;
-}
-
-void delay_ms(uint16_t delay_value){
-	uint32_t ticks_timeout = ticks;
-	ticks_timeout += delay_value;
-	while(ticks < ticks_timeout){
-		__WFI();
-	}
-}
 
 void user_i2c_init(void){
 	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_SWM;
@@ -55,11 +38,11 @@ void user_i2c_clear_status(void){
 uint32_t timeout_tick;
 
 void user_i2c_timeout_start(void){
-	ticks = 0;
+	user_ticks = 0;
 }
 
 uint8_t user_i2c_timeout(void){
-	if(ticks == I2C_ACK_TIMEOUT_MS){
+	if(user_ticks == I2C_ACK_TIMEOUT_MS){
 		return 1;
 	}
 	else{
@@ -185,46 +168,32 @@ uint8_t user_i2c_master_read(uint8_t slave_addr, uint16_t slave_data_len, uint8_
 	return err;
 }
 
-void user_gpio_init(void){
-	LPC_GPIO_PORT->DIR[0] |= 1 << 4;
-	LPC_GPIO_PORT->CLR[0] = 1 << 4;
-}
-
-void user_gpio_set(void){
-	LPC_GPIO_PORT->SET[0] = (1 << 4);
-}
-
-void user_gpio_clear(void){
-	LPC_GPIO_PORT->CLR[0] = (1 << 4);
-}
-
 int main(void){
 	uint8_t slv_data_tx[4] = {0x33, 0x7f, 0x55, 0x3e};
 	uint8_t slv_data_rx[4] = {0x00, 0x00, 0x00, 0x00};
 
 	SystemCoreClockUpdate();
 
+	user_delay_init();
 	user_gpio_init();
 	user_i2c_init();
 	user_i2c_enable_master();
 
 	NVIC_DisableIRQ(I2C_IRQn);
-	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
 
 	user_gpio_set();
 
 	while(1) {
 		//user_i2c_master_write(I2C_ADDR_7BIT, 2, slv_data_tx);
-		user_i2c_master_read(I2C_ADDR_7BIT, 4, slv_data_rx);
 
-		/*if(slv_data_tx[0] != slv_data_rx[0]){
-			user_gpio_set();
+		user_gpio_set();
+		for(uint32_t i = 0; i < 1000; i++){
+			user_i2c_master_read(I2C_ADDR_7BIT, 4, slv_data_rx);
+			user_delay_ms(1);
 		}
-		else{
-			user_gpio_clear();
-		}*/
 
-		delay_ms(1);
+		user_gpio_clear();
+		user_delay_ms(1000);
 	}
 }
 #endif

@@ -1,9 +1,6 @@
-#include "chip.h"
+#include "main.h"
 
 #ifdef MCU_TARGET_1
-
-const uint32_t OscRateIn = 0;
-const uint32_t ExtRateIn = 0;
 
 #define I2C_ADDR_7BIT           	0x60
 #define I2C_RX_BUFF					16
@@ -132,10 +129,13 @@ int main(void){
 	slave_tx_buff[2] = 0x32;
 	slave_tx_buff[3] = 0x33;
 
+	user_gpio_init();
 	user_i2c_init();
 	user_i2c_set_slave_address(I2C_ADDR_7BIT);
 	user_i2c_enable_slave();
 	user_i2c_enable_slave_interrupts();
+
+	user_gpio_set();
 
 	while(1) {
 		if(user_i2c_slave_data_ready()){
@@ -144,45 +144,4 @@ int main(void){
 		}
 	}
 }
-
-
-/*
-int main(void){
-	volatile uint8_t slave_data;
-	uint32_t slave_state;
-
-	SystemCoreClockUpdate();
-
-	user_i2c_init();
-	user_i2c_set_slave_address(I2C_ADDR_7BIT);
-//	user_i2c_enable_monitor();
-//	LPC_I2C->STAT = I2C_STAT_SLVSEL; //Clear status register
-	user_i2c_enable_slave();
-//	user_i2c_enable_slave_interrupts();
-
-	//	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
-
-	while(1) {
-		//delay_ms(1);
-
-		while(!(LPC_I2C->STAT & I2C_INTSTAT_SLVPENDING)){ }
-
-		slave_state = LPC_I2C->STAT & I2C_STAT_SLVSTATE >> 9;
-
-		switch(slave_state){
-		case I2C_STAT_SLVCODE_ADDR:
-			LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
-			break;
-		case I2C_STAT_SLVCODE_RX:
-			slave_data = LPC_I2C->SLVDAT;
-			LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
-			break;
-		case I2C_STAT_SLVCODE_TX:
-			break;
-		}
-	}
-}
-*/
-
-
 #endif
