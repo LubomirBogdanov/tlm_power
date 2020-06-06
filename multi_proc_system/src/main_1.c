@@ -2,9 +2,7 @@
 
 #ifdef MCU_TARGET_1
 
-#define I2C_ADDR_7BIT           	0x60
-
-
+extern volatile uint8_t slave_tx_buff[I2C_RX_BUFF];
 
 int main(void){
 	volatile uint8_t my_rx_data[I2C_RX_BUFF];
@@ -19,9 +17,11 @@ int main(void){
 
 	user_gpio_init();
 	user_i2c_init();
-	user_i2c_set_slave_address(I2C_ADDR_7BIT);
+	user_i2c_enable_master();
+	user_i2c_set_slave_address(I2C_OWN_ADDR_7BIT);
 	user_i2c_enable_slave();
 	user_i2c_enable_slave_interrupts();
+	user_i2c_enable_monitor();
 
 	user_gpio_set();
 
@@ -32,4 +32,5 @@ int main(void){
 		}
 	}
 }
+
 #endif
