@@ -93,12 +93,14 @@ void user_i2c_clear_status(void){
 	LPC_I2C->STAT = (I2C_STAT_MSTRARBLOSS | I2C_STAT_MSTSTSTPERR);
 }
 
+uint32_t timeout_ticks;
+
 void user_i2c_timeout_start(void){
-	user_ticks = 0;
+	timeout_ticks = user_ticks + I2C_ACK_TIMEOUT_MS;
 }
 
 uint8_t user_i2c_timeout(void){
-	if(user_ticks == I2C_ACK_TIMEOUT_MS){
+	if(user_ticks >= timeout_ticks){
 		return 1;
 	}
 	else{
@@ -175,11 +177,11 @@ uint8_t user_i2c_master_write(uint8_t slave_addr, uint16_t slave_data_len, uint8
 	uint8_t err = 0;
 	uint16_t i;
 
-	user_i2c_monitor_wait_bus_idle();
-
 	user_i2c_clear_status();
 
 	LPC_I2C->MSTDAT = slave_addr << 1; //Make 8-bit address
+
+	user_i2c_monitor_wait_bus_idle();
 
 	LPC_I2C->MSTCTL = I2C_MSTCTL_MSTSTART; //Start
 
@@ -203,11 +205,11 @@ uint8_t user_i2c_master_read(uint8_t slave_addr, uint16_t slave_data_len, uint8_
 	uint8_t err = 0;
 	uint16_t i;
 
-	user_i2c_monitor_wait_bus_idle();
-
 	user_i2c_clear_status();
 
 	LPC_I2C->MSTDAT = (slave_addr << 1) | 0x01; //Make 8-bit address
+
+	user_i2c_monitor_wait_bus_idle();
 
 	LPC_I2C->MSTCTL = I2C_MSTCTL_MSTSTART; //Start
 
@@ -266,16 +268,10 @@ uint8_t user_i2c_slave_data_read(uint8_t *slave_data_buff){
 	return slave_rx_buff_len;
 }
 
-uint8_t user_i2c_monitor_bus_idle(void){
-	uint32_t bus_status = LPC_I2C->STAT & I2C_STAT_MONACTIVE;
-	bus_status = (bus_status >> 18) & 0x01;
-	bus_status ^= 0x01;
-
-	return bus_status;
-}
-
 void user_i2c_monitor_wait_bus_idle(void){
-	while(!user_i2c_monitor_bus_idle()){
-		user_delay_ms(1);
+	uint32_t bus_status = 1;
+
+	while(bus_status){
+		bus_status = ((LPC_I2C->STAT & I2C_STAT_MONACTIVE) >> 18) & 0x01;
 	}
 }
