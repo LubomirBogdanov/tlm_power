@@ -162,6 +162,13 @@ end:
 	return slave_ack;
 }
 
+void user_i2c_master_check_pending(void){
+	uint8_t master_pending = 0;
+	while(!master_pending){
+		master_pending = (LPC_I2C->STAT & I2C_STAT_MSTPENDING);
+ 	}
+}
+
 /*!
  * \brief Writes a number of bytes to a slave. This function is blocking
  * for at least of I2C_ACK_TIMEOUT_MS milliseconds if the slave does not
@@ -183,6 +190,8 @@ uint8_t user_i2c_master_write(uint8_t slave_addr, uint16_t slave_data_len, uint8
 
 	user_i2c_monitor_wait_bus_idle();
 
+	user_i2c_master_check_pending();
+
 	LPC_I2C->MSTCTL = I2C_MSTCTL_MSTSTART; //Start
 
 	if(user_i2c_master_ack_get()){
@@ -195,6 +204,8 @@ uint8_t user_i2c_master_write(uint8_t slave_addr, uint16_t slave_data_len, uint8
 			}
 		}
 	}
+
+	user_i2c_master_check_pending();
 
 	LPC_I2C->MSTCTL = I2C_MSTCTL_MSTSTOP; //Stop
 
@@ -210,6 +221,8 @@ uint8_t user_i2c_master_read(uint8_t slave_addr, uint16_t slave_data_len, uint8_
 	LPC_I2C->MSTDAT = (slave_addr << 1) | 0x01; //Make 8-bit address
 
 	user_i2c_monitor_wait_bus_idle();
+
+	user_i2c_master_check_pending();
 
 	LPC_I2C->MSTCTL = I2C_MSTCTL_MSTSTART; //Start
 
@@ -227,6 +240,8 @@ uint8_t user_i2c_master_read(uint8_t slave_addr, uint16_t slave_data_len, uint8_
 			break;
 		}
 	}
+
+	user_i2c_master_check_pending();
 
 	LPC_I2C->MSTCTL = I2C_MSTCTL_MSTSTOP; //Stop
 
@@ -269,9 +284,21 @@ uint8_t user_i2c_slave_data_read(uint8_t *slave_data_buff){
 }
 
 void user_i2c_monitor_wait_bus_idle(void){
-	uint32_t bus_status = 1;
+	uint8_t random_index = 0;
+	uint8_t random_array[5] = {3, 1, 4, 2, 5};
+/*	uint32_t bus_status = 1;
 
 	while(bus_status){
-		bus_status = ((LPC_I2C->STAT & I2C_STAT_MONACTIVE) >> 18) & 0x01;
+		bus_status = ((LPC_I2C->STAT & I2C_STAT_MONACTIVE) >> 18) & 0x01;		
+	}*/
+
+	uint32_t bus_status = 0;
+	LPC_I2C->STAT = I2C_STAT_MONIDLE;
+	while(!bus_status){
+		if(random_index == 5){
+			random_index = 0;
+		}
+		user_delay_ms(random_array[random_index++]);
+		bus_status = ((LPC_I2C->STAT & I2C_STAT_MONIDLE) >> 19) & 0x01;
 	}
 }

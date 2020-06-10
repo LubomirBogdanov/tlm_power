@@ -97,7 +97,7 @@ empty:
 	@for i in ${PROC_LIST};									\
 	  do 											\
 		${MAKE} multiplex MCU_INDEX=$$i;						\
-		@echo 'Flashing file: ${PROJECT}_empty_${MCU_INDEX}.axf'; 			\
+		echo 'Flashing file: ${PROJECT}_empty.axf';		 			\
 		${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}_empty.axf; 			\
 	done
 	@echo ' '
