@@ -8,8 +8,6 @@ int main(void) {
 	volatile uint8_t my_rx_data[I2C_RX_BUFF];
 	volatile uint8_t my_rx_data_len;
 
-	SystemCoreClockUpdate();
-
 	slave_tx_buff[0] = 0x70;
 	slave_tx_buff[1] = 0x71;
 	slave_tx_buff[2] = 0x72;

@@ -14,4 +14,6 @@
 #include "user_delay.h"
 #include "user_i2c.h"
 
+#define IRC_CLOCK_RATE_HZ		12000000
+
 #endif /* MAIN_H_ */

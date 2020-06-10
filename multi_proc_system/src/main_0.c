@@ -6,8 +6,6 @@ int main(void){
 	uint8_t slv_data_tx[4] = {0x33, 0x7f, 0x55, 0x3e};
 	uint8_t slv_data_rx[4] = {0x00, 0x00, 0x00, 0x00};
 
-	SystemCoreClockUpdate();
-
 	user_delay_init();
 	user_gpio_init();
 	user_i2c_init();

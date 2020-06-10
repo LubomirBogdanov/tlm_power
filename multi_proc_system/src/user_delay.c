@@ -17,8 +17,7 @@ void SysTick_Handler(void){
 }
 
 void user_delay_init(void){
-	SystemCoreClockUpdate();
-	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
+	SysTick_Config(IRC_CLOCK_RATE_HZ / TICKRATE_HZ);
 }
 
 void user_delay_ms(uint16_t delay_value){

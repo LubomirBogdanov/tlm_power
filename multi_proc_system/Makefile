@@ -2,7 +2,7 @@ MCU_INDEX		= 0
 #The name of the top-level source file
 PROJECT			= main
 #Add additional files here. The ${PROJECT}.c should be at the end.
-SRC			= cr_startup_lpc8xx.c crp.c mtb.c ${PROJECT}_${MCU_INDEX}.c   
+SRC			= cr_startup_lpc8xx.c crp.c mtb.c user_delay.c user_gpio.c user_i2c.c ${PROJECT}_${MCU_INDEX}.c   
 
 INDIR			= src
 OUTDIR			= gcc
@@ -41,7 +41,7 @@ SWDMULTIPLEX_PARAM	= -e -n
 #stty -F /dev/ttyUSB0 2400 -parenb cs8 -cstopb -crtscts raw
 #echo -e -n "\x35" > /dev/ttyUSB0
 
-.PHONY: ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf ${OBJ} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.lst
+.PHONY: ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf ${OBJ} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.lst empty
 all: ${OUTDIR} ${OUTDIR}/${PROJECT}_${MCU_INDEX}.axf ${OUTDIR}/${PROJECT}_${MCU_INDEX}.lst size ${OUTDIR}/${PROJECT}_${MCU_INDEX}.a43
 
 
@@ -91,6 +91,16 @@ multiplex:
 	${SWDMULTIPLEX_CMD} ${SWDMULTIPLEX_PARAM} "${MCU_INDEX}" > ${SWDMULTIPLEX_DEV}
 	@echo ' '
 
+empty:
+	@echo 'Flashing system with empty firmware ...'
+	${MAKE}	MCU_INDEX=empty
+	@for i in ${PROC_LIST};									\
+	  do 											\
+		${MAKE} multiplex MCU_INDEX=$$i;						\
+		@echo 'Flashing file: ${PROJECT}_empty_${MCU_INDEX}.axf'; 			\
+		${FLASHCMD} ${FLASHCMDFLAGS} ${OUTDIR}/${PROJECT}_empty.axf; 			\
+	done
+	@echo ' '
 
 clean:
 	@echo 'Removing directory: ${OUTDIR}'

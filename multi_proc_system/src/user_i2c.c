@@ -134,7 +134,7 @@ uint8_t user_i2c_master_ack_get(void){
 
 	}
 	else if(master_status & I2C_STAT_MSTSTSTPERR){
-
+		
 	}
 	else{
 		master_state = (LPC_I2C->STAT & I2C_STAT_MSTSTATE) >> 1;
