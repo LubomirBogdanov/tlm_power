@@ -22,7 +22,7 @@ int main(void) {
 	user_i2c_enable_slave();
 	user_i2c_enable_slave_interrupts();
 
-	user_gpio_clear();
+	user_gpio_set();
 
 	while(1) {
 		if(user_i2c_slave_data_ready()){

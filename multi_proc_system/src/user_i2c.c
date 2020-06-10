@@ -15,6 +15,13 @@ volatile uint8_t slave_tx_buff[I2C_RX_BUFF];
 volatile uint8_t slave_data_ready;
 volatile uint8_t slave_rx_buff_len;
 
+void user_i2c_slave_check_pending(void){
+	uint8_t slave_pending = 0;
+	while(!slave_pending){
+		slave_pending = (LPC_I2C->STAT & I2C_STAT_SLVPENDING) >> 8;
+ 	}
+}
+
 void I2C_IRQHandler(void){
 	uint32_t irq_status;
 	uint32_t slave_status;
@@ -46,14 +53,15 @@ void I2C_IRQHandler(void){
 			}
 			break;
 
-		case I2C_STAT_SLVCODE_TX:		// Get byte that needs to be sent
+		case I2C_STAT_SLVCODE_TX:		// Data byte sending
 			LPC_I2C->SLVDAT = slave_tx_buff[slave_tx_buff_index++];
 			if(slave_tx_buff_index >= I2C_TX_BUFF){
 				slave_tx_buff_index = 0;
 			}
 			break;
 		}
-
+		
+		user_i2c_slave_check_pending();
 		LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
 	}
 }
@@ -284,21 +292,9 @@ uint8_t user_i2c_slave_data_read(uint8_t *slave_data_buff){
 }
 
 void user_i2c_monitor_wait_bus_idle(void){
-	uint8_t random_index = 0;
-	uint8_t random_array[5] = {3, 1, 4, 2, 5};
-/*	uint32_t bus_status = 1;
+	uint32_t bus_status = 1;
 
 	while(bus_status){
 		bus_status = ((LPC_I2C->STAT & I2C_STAT_MONACTIVE) >> 18) & 0x01;		
-	}*/
-
-	uint32_t bus_status = 0;
-	LPC_I2C->STAT = I2C_STAT_MONIDLE;
-	while(!bus_status){
-		if(random_index == 5){
-			random_index = 0;
-		}
-		user_delay_ms(random_array[random_index++]);
-		bus_status = ((LPC_I2C->STAT & I2C_STAT_MONIDLE) >> 19) & 0x01;
 	}
 }

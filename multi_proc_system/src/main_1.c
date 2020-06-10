@@ -26,6 +26,17 @@ int main(void){
 	while(1) {
 		if(user_i2c_slave_data_ready()){
 			my_rx_data_len = user_i2c_slave_data_read(my_rx_data);
+
+			if(my_rx_data[0] == 0x33){
+				if(my_rx_data[1] == 0x7f){
+					if(my_rx_data[2] == 0x55){
+						if(my_rx_data[3] == 0x3E){
+							user_gpio_toggle();
+						}
+					}
+				}
+			}
+
 			my_rx_data_len = my_rx_data_len;
 		}
 	}
