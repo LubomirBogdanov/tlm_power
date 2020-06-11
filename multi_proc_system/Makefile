@@ -2,7 +2,7 @@ MCU_INDEX		= 0
 #The name of the top-level source file
 PROJECT			= main
 #Add additional files here. The ${PROJECT}.c should be at the end.
-SRC			= cr_startup_lpc8xx.c crp.c mtb.c user_delay.c user_gpio.c user_i2c.c ${PROJECT}_${MCU_INDEX}.c   
+SRC			= cr_startup_lpc8xx.c crp.c mtb.c user_delay.c user_gpio.c user_i2c.c sort_func.c ported.c ${PROJECT}_${MCU_INDEX}.c   
 
 INDIR			= src
 OUTDIR			= gcc

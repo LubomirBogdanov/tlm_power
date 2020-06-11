@@ -60,8 +60,7 @@ void I2C_IRQHandler(void){
 			}
 			break;
 		}
-		
-		user_i2c_slave_check_pending();
+
 		LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
 	}
 }
