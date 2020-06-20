@@ -1,75 +1,27 @@
 #include "main.h"
+#include "ported.h"
+#include "aux_func.h"
+#include "straight_func.h"
+#include "fifo_multi.h"
 
 #ifdef MCU_TARGET_0
 
 int main(void){
-    while( lpc_wait_start() ) {}
-
-
-    int clk_num;
-
-    // Function's Input Arguments 
-    static tCH_7 in_0ND_3;
-
     // Function's Output Arguments 
-    static tCH_11 out_0ND_0;
+    static tCH_1 out_0ND_0;
 
-    // Additional Local Variables 
-    int e2;
-    int e3;
-    int e0;
-    int e1;
+    user_system_init();
 
-    for( int c0 =  ceil1(1); c0 <=  floor1(17); c0 += 1 ) {
-      for( int c1 =  ceil1(0); c1 <=  floor1(11); c1 += 1 ) {
-        if( c0-1 == 0 ) {
-          e2 = ddiv(c1,2);
-          e3 = ddiv(c1 + 1,2);
+    while( lpc_wait_start()) {}
 
-          _in_numbers_stream(&out_0ND_0);
-          if( c1-2*e2 == 0 ) {
-            if( -e2 + 5 >= 0 ) {
-              writeFSL(ND_0_OG_1_CH_11, &out_0ND_0, (sizeof(tCH_11)+(sizeof(tCH_11)%4)+3)/4);
-            }
-          }
-          if( c1-2*e3 + 1 == 0 ) {
-            if( e3-1 >= 0 ) {
-              writeFSL(ND_0_OG_1_CH_11, &out_0ND_0, (sizeof(tCH_11)+(sizeof(tCH_11)%4)+3)/4);
-            }
-          }
-        }
-        if( c0-6 >= 0 ) {
-          if( c1-6 == 0 ) {
-            e0 = ddiv(c0 + 1,2);
-            e1 = ddiv(c0,2);
-            if( c0-6 == 0 ) {
-              readFSL(ND_3_IG_1_CH_7, &in_0ND_3, (sizeof(tCH_7)+(sizeof(tCH_7)%4)+3)/4);
-            }
-            if( c0-17 == 0 ) {
-              readFSL(ND_3_IG_2_CH_8, &in_0ND_3, (sizeof(tCH_8)+(sizeof(tCH_8)%4)+3)/4);
-            }
-            if( c0-2*e0 + 1 == 0 ) {
-              if( e0-4 >= 0 ) {
-                if( -e0 + 8 >= 0 ) {
-                  readFSL(ND_3_IG_3_CH_9, &in_0ND_3, (sizeof(tCH_9)+(sizeof(tCH_9)%4)+3)/4);
-                }
-              }
-            }
-            if( c0-2*e1 == 0 ) {
-              if( e1-4 >= 0 ) {
-                if( -e1 + 8 >= 0 ) {
-                  readFSL(ND_3_IG_4_CH_10, &in_0ND_3, (sizeof(tCH_10)+(sizeof(tCH_10)%4)+3)/4);
-                }
-              }
-            }
-
-            _out_numbers_stream(&in_0ND_3);
-          }
-        }
-      } // for c1
+    for( int c0 =  ceil1(0); c0 <=  floor1(4); c0 += 1 ) {
+      _in_numbers_stream(&out_0ND_0);
+      writeFSL(ND_0_OG_1_CH_1, &out_0ND_0, 1);
     } // for c0
 
-    lpc_set_stop();
+    lpc_send_stop();
+
+    while(1){ }
 }
 
 

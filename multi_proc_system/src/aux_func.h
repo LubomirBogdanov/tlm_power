@@ -2,62 +2,19 @@
 #define __AUX_FUNC_H__
 
 #include <math.h>
-
-#include "sort_func.h"
-
-typedef int tCH_1;
-typedef int tCH_2;
-typedef int tCH_3;
-typedef int tCH_4;
-typedef int tCH_5;
-typedef int tCH_6;
-typedef int tCH_7;
-typedef int tCH_8;
-typedef int tCH_9;
-typedef int tCH_10;
-typedef int tCH_11;
+#include "straight_func.h"
 
 // Parameters
-
-void  _in_numbers_stream( tCH_11 *out_0ND_0 ) {
-    in_numbers_stream( (int *)out_0ND_0 );
-}
-
-void  _out_numbers_stream( tCH_10 *in_0ND_3 ) {
-    out_numbers_stream( in_0ND_3 );
-}
-
-void  _compare_numbers( tCH_5 *in_0ND_2, tCH_6 *in_1ND_2, tCH_9 *out_2ND_2, tCH_10 *out_3ND_2 ) {
-    compare_numbers( (int *)in_0ND_2, (int *)in_1ND_2, (int *)out_2ND_2, (int *)out_3ND_2 );
-}
 
 
 #define min(a,b) ((a)<=(b))?(a):(b)
 #define max(a,b) ((a)>=(b))?(a):(b)
 
-int ddiv(int a, int b ){
-    //return (int)(a/b);
-    return ( (int) (((a)<0) ? ((a)-(b)+1)/(b) : (a)/(b)) ); 
-    //return ( (int) (((a)<0)^((b)<0) ? ((a) < 0 ? ((a)-(b)+1)/(b) : ((a)-(b)-1)/(b)) : (a)/(b)) ); 
-}
-
-int mod(int a, int b){
-    return mod(a, b);
-}
-
-int ceil1(int a){
-    return a; /* return (int) ceil(a);*/
-}
-
-int floor1(int a){
-    return a; /* return (int) floor(a);*/
-}
-
 #define readFSL(pos, value, len) \
     do {\
         int i;\
         for (i = 0; i < len; i++) \
-            microblaze_bread_datafsl(((volatile int *) value)[i], pos);\
+            microblaze_bread_datafsl(value, pos);\
     } while(0)
         
 #define writeFSL(pos, value, len) \

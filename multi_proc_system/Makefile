@@ -2,7 +2,7 @@ MCU_INDEX		= 0
 #The name of the top-level source file
 PROJECT			= main
 #Add additional files here. The ${PROJECT}.c should be at the end.
-SRC			= cr_startup_lpc8xx.c crp.c mtb.c user_delay.c user_gpio.c user_i2c.c sort_func.c ported.c ${PROJECT}_${MCU_INDEX}.c   
+SRC			= cr_startup_lpc8xx.c crp.c mtb.c user_delay.c user_gpio.c user_i2c_daedalus.c fifo_multi.c user_system_init.c straight_func.c ported.c ${PROJECT}_${MCU_INDEX}.c   
 
 INDIR			= src
 OUTDIR			= gcc
@@ -21,7 +21,7 @@ LD			= ${TOOLCHAIN_PATH}/${TOOLCHAIN_PREFIX}-ld
 OBJCOPY			= ${TOOLCHAIN_PATH}/${TOOLCHAIN_PREFIX}-objcopy
 OBJDUMP			= ${TOOLCHAIN_PATH}/${TOOLCHAIN_PREFIX}-objdump
 SIZE			= ${TOOLCHAIN_PATH}/${TOOLCHAIN_PREFIX}-size
-PREPROCESSOR		= -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__
+PREPROCESSOR		= -DDEBUG -DUSE_USER_I2C_DAEDALUS -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__
 IPATH			= ../lpc_chip_8xx/inc
 OPTFLAGS		= -O0 -fno-common -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -specs=redlib.specs -MMD -MP -MF"${@:${OUTDIR}/%.o=${OUTDIR}/%.d}" -MT"${@:${OUTDIR}/%.o=${OUTDIR}/%.o}" -MT"${@:${OUTDIR}/%.o=${OUTDIR}/%.d}"
 DEBUGFLAGS		= -g3

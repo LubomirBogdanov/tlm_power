@@ -5,8 +5,10 @@
  *      Author: lbogdanov
  */
 
-#ifndef USER_I2C_H_
-#define USER_I2C_H_
+#ifndef USER_I2C_STANDARD_H_
+#define USER_I2C_STANDARD_H_
+
+#ifdef USE_USER_I2C_STANDARD
 
 #include "main.h"
 
@@ -64,5 +66,6 @@ uint8_t user_i2c_timeout(void);
 uint8_t user_i2c_master_ack_get(void);
 void user_i2c_monitor_wait_bus_idle(void);
 
+#endif
 
 #endif /* USER_I2C_H_ */

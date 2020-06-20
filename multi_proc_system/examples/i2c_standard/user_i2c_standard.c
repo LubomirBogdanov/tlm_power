@@ -4,8 +4,9 @@
  *  Created on: Jun 6, 2020
  *      Author: lbogdanov
  */
-#include "user_i2c.h"
+#include "user_i2c_standard.h"
 
+#ifdef USE_USER_I2C_STANDARD
 extern volatile uint32_t user_ticks;
 
 volatile uint8_t slave_rx_buff_index;
@@ -297,3 +298,4 @@ void user_i2c_monitor_wait_bus_idle(void){
 		bus_status = ((LPC_I2C->STAT & I2C_STAT_MONACTIVE) >> 18) & 0x01;		
 	}
 }
+#endif
