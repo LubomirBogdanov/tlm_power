@@ -259,7 +259,7 @@ uint8_t user_i2c_master_read(uint8_t slave_addr, uint16_t slave_data_len, uint8_
 		slave_data[0] = LPC_I2C->MSTDAT;
 	}
 
-	for(i = 0; i < 1000; i++){ } //BUG fix
+	//for(i = 0; i < 1000; i++){ } //BUG fix
 
 	for(i = 1; i < slave_data_len; i++){
 		LPC_I2C->MSTCTL = I2C_MSTCTL_MSTCONTINUE;
