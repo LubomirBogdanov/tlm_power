@@ -17,7 +17,7 @@ this directory and type:
 make  
   
 to build the source for target number 0. If you want to build the sources  
-for target number 2 type:  
+for target number 1 type:  
 
 make MCU_INDEX=1  
 
