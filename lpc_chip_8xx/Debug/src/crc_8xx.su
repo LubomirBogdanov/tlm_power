@@ -1,0 +1,15 @@
+clock_8xx.h:200:20:Chip_Clock_EnablePeriphClock	16	static
+clock_8xx.h:210:20:Chip_Clock_DisablePeriphClock	16	static
+crc_8xx.h:120:20:Chip_CRC_UseCRC16	8	static
+crc_8xx.h:130:20:Chip_CRC_UseCRC32	8	static
+crc_8xx.h:140:20:Chip_CRC_UseCCITT	8	static
+crc_8xx.h:196:20:Chip_CRC_Write8	16	static
+crc_8xx.h:206:20:Chip_CRC_Write16	16	static
+crc_8xx.h:216:20:Chip_CRC_Write32	16	static
+crc_8xx.h:225:24:Chip_CRC_Sum	8	static
+crc_8xx.c:50:6:Chip_CRC_Init	8	static
+crc_8xx.c:56:6:Chip_CRC_Deinit	8	static
+crc_8xx.c:62:6:Chip_CRC_UseDefaultConfig	16	static
+crc_8xx.c:81:10:Chip_CRC_CRC8	16	static
+crc_8xx.c:94:10:Chip_CRC_CRC16	16	static
+crc_8xx.c:107:10:Chip_CRC_CRC32	16	static

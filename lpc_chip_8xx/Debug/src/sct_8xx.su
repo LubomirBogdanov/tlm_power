@@ -1,0 +1,11 @@
+syscon_8xx.h:277:20:Chip_SYSCTL_AssertPeriphReset	16	static
+syscon_8xx.h:287:20:Chip_SYSCTL_DeassertPeriphReset	16	static
+syscon_8xx.h:297:20:Chip_SYSCTL_PeriphReset	16	static
+clock_8xx.h:200:20:Chip_Clock_EnablePeriphClock	16	static
+clock_8xx.h:210:20:Chip_Clock_DisablePeriphClock	16	static
+sct_8xx.h:419:20:Chip_SCT_SetControl	16	static
+sct_8xx.h:430:20:Chip_SCT_ClearControl	16	static
+sct_8xx.c:51:6:Chip_SCT_Init	16	static
+sct_8xx.c:58:6:Chip_SCT_DeInit	16	static
+sct_8xx.c:64:6:Chip_SCT_SetClrControl	24	static
+sct_8xx.c:75:6:Chip_SCT_SetConflictResolution	24	static

@@ -1,49 +1,6 @@
-22:20:59 **** Build of configuration Debug for project multi_proc_system ****
+18:09:34 **** Incremental Build of configuration Debug for project multi_proc_system ****
 make -r -j2 all 
-Building file: ../src/crp.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
-Building file: ../src/cr_startup_lpc8xx.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc8xx.d" -MT"src/cr_startup_lpc8xx.o" -MT"src/cr_startup_lpc8xx.d" -o "src/cr_startup_lpc8xx.o" "../src/cr_startup_lpc8xx.c"
-Finished building: ../src/crp.c
- 
-Building file: ../src/main.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main.d" -MT"src/main.o" -MT"src/main.d" -o "src/main.o" "../src/main.c"
-Finished building: ../src/cr_startup_lpc8xx.c
- 
-Building file: ../src/mtb.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/mtb.d" -MT"src/mtb.o" -MT"src/mtb.d" -o "src/mtb.o" "../src/mtb.c"
-In file included from /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/chip.h:185,
-                 from ../src/main.c:1:
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h: In function 'Chip_GPIO_SetPortDIRMask':
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: warning: '~' on a boolean expression [-Wbool-operation]
-  Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
-                                                   ^
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: note: did you mean to use logical not?
-  Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
-                                                   ^
-                                                   !
-Finished building: ../src/mtb.c
- 
-Finished building: ../src/main.c
- 
-Building target: multi_proc_system.axf
-Invoking: MCU Linker
-arm-none-eabi-gcc -nostdlib -Xlinker -Map="multi_proc_system.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "multi_proc_system_Debug.ld" -o "multi_proc_system.axf"  ./src/cr_startup_lpc8xx.o ./src/crp.o ./src/main.o ./src/mtb.o   
-Memory region         Used Size  Region Size  %age Used
-         MFlash4:         644 B         4 KB     15.72%
-         RamLoc1:          0 GB         1 KB      0.00%
-Finished building target: multi_proc_system.axf
- 
-make --no-print-directory post-build
-Performing post-build steps
-arm-none-eabi-size "multi_proc_system.axf"; # arm-none-eabi-objcopy -v -O binary "multi_proc_system.axf" "multi_proc_system.bin" ; # checksum -p LPC810 -d "multi_proc_system.bin";
-   text	   data	    bss	    dec	    hex	filename
-    644	      0	      0	    644	    284	multi_proc_system.axf
- 
+make: Nothing to be done for 'all'.
 
-22:20:59 Build Finished. 0 errors, 1 warnings. (took 798ms)
+18:09:34 Build Finished. 0 errors, 0 warnings. (took 112ms)
 

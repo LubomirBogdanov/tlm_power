@@ -1,0 +1,4 @@
+syscon_8xx.c:66:6:Chip_SYSCTL_SetDeepSleepPD	16	static
+syscon_8xx.c:73:6:Chip_SYSCTL_SetWakeup	16	static
+syscon_8xx.c:80:6:Chip_SYSCTL_PowerDown	24	static
+syscon_8xx.c:95:6:Chip_SYSCTL_PowerUp	24	static

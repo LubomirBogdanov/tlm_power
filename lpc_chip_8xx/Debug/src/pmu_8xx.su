@@ -1,0 +1,5 @@
+pmu_8xx.c:54:6:Chip_PMU_SleepState	16	static
+pmu_8xx.c:64:6:Chip_PMU_DeepSleepState	16	static
+pmu_8xx.c:74:6:Chip_PMU_PowerDownState	16	static
+pmu_8xx.c:84:6:Chip_PMU_DeepPowerDownState	16	static
+pmu_8xx.c:94:6:Chip_PMU_Sleep	16	static

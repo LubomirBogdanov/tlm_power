@@ -1,0 +1,22 @@
+/*
+ * user_systick.c
+ *
+ *  Created on: Jun 6, 2020
+ *      Author: lbogdanov
+ */
+#include "user_delay.h"
+
+volatile uint32_t ticks;
+
+void SysTick_Handler(void){
+	ticks++;
+}
+
+void delay_ms(uint16_t delay_value){
+	uint32_t ticks_timeout = ticks;
+	ticks_timeout += delay_value;
+	while(ticks < ticks_timeout){
+		__WFI();
+	}
+}
+

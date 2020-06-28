@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 
+//#define NUM_OF_TOKENS	5
+//#define NUM_OF_TOKENS	50
+#define NUM_OF_TOKENS	500
+
 typedef int tCH_1;
 
 int ddiv(int a, int b );

@@ -1,0 +1,13 @@
+spi_common_8xx.h:396:24:Chip_SPI_GetStatus	16	static
+spi_common_8xx.h:409:20:Chip_SPI_ClearStatus	16	static
+spi_common_8xx.h:476:24:Chip_SPI_ReadRawRXFifo	16	static
+spi_common_8xx.h:501:20:Chip_SPI_WriteTXData	16	static
+spim_8xx.h:90:20:Chip_SPIM_ForceEndOfTransfer	16	static
+spim_8xx.c:53:10:Chip_SPIM_GetClockRate	16	static
+spim_8xx.c:59:10:Chip_SPIM_SetClockRate	24	static
+spim_8xx.c:82:6:Chip_SPIM_DelayConfig	16	static
+spim_8xx.c:91:6:Chip_SPIM_AssertSSEL	24	static
+spim_8xx.c:104:6:Chip_SPIM_DeAssertSSEL	24	static
+spim_8xx.c:113:6:Chip_SPIM_XferHandler	24	static
+spim_8xx.c:207:6:Chip_SPIM_Xfer	16	static
+spim_8xx.c:222:6:Chip_SPIM_XferBlocking	16	static

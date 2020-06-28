@@ -1,0 +1,5 @@
+clock_8xx.h:200:20:Chip_Clock_EnablePeriphClock	16	static
+clock_8xx.h:210:20:Chip_Clock_DisablePeriphClock	16	static
+wwdt_8xx.c:51:6:Chip_WWDT_Init	16	static
+wwdt_8xx.c:63:6:Chip_WWDT_DeInit	16	static
+wwdt_8xx.c:69:6:Chip_WWDT_ClearStatusFlag	16	static

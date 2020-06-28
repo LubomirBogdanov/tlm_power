@@ -1,0 +1,30 @@
+/*
+ * user_delay.c
+ *
+ *  Created on: Jun 6, 2020
+ *      Author: lbogdanov
+ */
+#include "user_delay.h"
+
+volatile uint32_t user_ticks;
+
+const uint32_t OscRateIn = 0;
+const uint32_t ExtRateIn = 0;
+
+void SysTick_Handler(void){
+	user_ticks++;
+}
+
+void user_delay_init(void){
+	SystemCoreClockUpdate();
+	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
+}
+
+void user_delay_ms(uint16_t delay_value){
+	uint32_t ticks_timeout = user_ticks;
+	ticks_timeout += delay_value;
+	while(user_ticks < ticks_timeout){
+		__WFI();
+	}
+}
+

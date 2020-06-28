@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;multi_proc_system/src/user_systick.c&apos; to &apos;user_delay.c&apos;" description="Rename resource &apos;user_systick.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/user_systick.c" name="user_delay.c" stamp="1591444034067" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;multi_proc_system/src/user_systick.h&apos; to &apos;user_delay.h&apos;" description="Rename resource &apos;user_systick.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/user_systick.h" name="user_delay.h" stamp="1591444043687" updateReferences="true"/>
+</session>

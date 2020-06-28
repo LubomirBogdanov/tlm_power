@@ -1,0 +1,8 @@
+clock_8xx.h:148:20:Chip_Clock_SetupSystemPLL	16	static
+clock_8xx.h:157:20:Chip_Clock_IsSystemPLLLocked	8	static
+clock_8xx.h:190:20:Chip_Clock_SetSysClockDiv	16	static
+clock_8xx.h:313:24:Chip_Clock_GetIntOscRate	8	static
+fmc_8xx.h:77:20:Chip_FMC_SetFLASHAccess	24	static
+irc_8xx.c:142:13:pll_config	16	static
+irc_8xx.c:168:6:Chip_IRC_SetFreq	32	static
+irc_8xx.c:194:6:Chip_IRC_SetFreq_ROM	48	static

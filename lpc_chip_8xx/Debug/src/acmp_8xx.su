@@ -1,0 +1,11 @@
+clock_8xx.h:200:20:Chip_Clock_EnablePeriphClock	16	static
+clock_8xx.h:210:20:Chip_Clock_DisablePeriphClock	16	static
+acmp_8xx.c:48:6:Chip_ACMP_Init	16	static
+acmp_8xx.c:55:6:Chip_ACMP_Deinit	16	static
+acmp_8xx.c:62:6:Chip_ACMP_EdgeClear	24	static
+acmp_8xx.c:72:6:Chip_ACMP_SetEdgeSelection	24	static
+acmp_8xx.c:81:6:Chip_ACMP_SetPosVoltRef	24	static
+acmp_8xx.c:90:6:Chip_ACMP_SetNegVoltRef	24	static
+acmp_8xx.c:99:6:Chip_ACMP_SetHysteresis	24	static
+acmp_8xx.c:108:6:Chip_ACMP_SetupAMCPRefs	40	static
+acmp_8xx.c:121:6:Chip_ACMP_SetupVoltLadder	32	static

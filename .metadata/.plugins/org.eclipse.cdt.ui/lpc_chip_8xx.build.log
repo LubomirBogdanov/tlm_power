@@ -1,0 +1,6 @@
+18:09:00 **** Build of configuration Debug for project lpc_chip_8xx ****
+make -r all 
+make: Nothing to be done for 'all'.
+
+18:09:00 Build Finished. 0 errors, 0 warnings. (took 132ms)
+

@@ -1,0 +1,147 @@
+#include "main.h"
+
+#ifdef MCU_TARGET_1
+
+const uint32_t OscRateIn = 0;
+const uint32_t ExtRateIn = 0;
+
+#define I2C_ADDR_7BIT           	0x60
+#define I2C_RX_BUFF					16
+#define I2C_TX_BUFF					16
+
+volatile uint8_t slave_rx_buff_index;
+volatile uint8_t slave_rx_buff[I2C_RX_BUFF];
+volatile uint8_t slave_tx_buff_index;
+volatile uint8_t slave_tx_buff[I2C_RX_BUFF];
+volatile uint8_t slave_data_ready;
+volatile uint8_t slave_rx_buff_len;
+
+void I2C_IRQHandler(void){
+	uint32_t irq_status;
+	uint32_t slave_status;
+
+	irq_status = LPC_I2C->INTSTAT;
+
+	if(irq_status & I2C_INTSTAT_SLVDESEL){
+		LPC_I2C->STAT = I2C_STAT_SLVDESEL; //Clear status bit
+		slave_rx_buff_len = slave_rx_buff_index;
+		slave_rx_buff_index = 0;
+		slave_tx_buff_index = 0;
+		if(slave_rx_buff_len != 0){
+			slave_data_ready = 1;
+		}
+	}
+	else{
+		slave_status = ((LPC_I2C->STAT & I2C_STAT_SLVSTATE) >> 9) & 0x03UL;
+
+		switch (slave_status) {
+		case I2C_STAT_SLVCODE_ADDR:		//Address byte match
+
+			break;
+
+		case I2C_STAT_SLVCODE_RX:		// Data byte received
+			slave_rx_buff[slave_rx_buff_index] = LPC_I2C->SLVDAT & I2C_SLVDAT_DATAMASK;
+			slave_rx_buff_index++;
+			if(slave_rx_buff_index >= I2C_RX_BUFF){
+				slave_rx_buff_index = 0;
+			}
+			break;
+
+		case I2C_STAT_SLVCODE_TX:		// Get byte that needs to be sent
+			LPC_I2C->SLVDAT = slave_tx_buff[slave_tx_buff_index++];
+			if(slave_tx_buff_index >= I2C_TX_BUFF){
+				slave_tx_buff_index = 0;
+			}
+			break;
+		}
+
+		LPC_I2C->SLVCTL = I2C_SLVCTL_SLVCONTINUE;
+	}
+}
+
+void user_i2c_init(void){
+	slave_rx_buff_index = 0;
+	slave_tx_buff_index = 0;
+	slave_data_ready = 0;
+	slave_rx_buff_len = 0;
+
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_SWM;
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_GPIO;
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_IOCON;
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_I2C0;
+
+	LPC_SWM->PINASSIGN[7] &= 0x00FFFFFF;
+	LPC_SWM->PINASSIGN[8] &= 0xFFFFFF00;
+	LPC_SWM->PINASSIGN[7] |= 0x01 << 24; //P0.1 = I2C_SDA
+	LPC_SWM->PINASSIGN[8] |= 0x00; 		 //P0.0 = I2C_SCL
+	LPC_IOCON->PIO0[0] |= PIN_OD_MASK;
+	LPC_IOCON->PIO0[1] |= PIN_OD_MASK;
+
+	LPC_SYSCON->PRESETCTRL &= ~(1 << 6);
+	LPC_SYSCON->PRESETCTRL |= 1 << 6;
+
+	LPC_I2C->CLKDIV = 20; //114 kHz
+	LPC_I2C->MSTTIME = 0x01; //3 clocks SCL(high), 2 clocks SCL(low), do not use logic operators here
+
+	LPC_I2C->STAT = I2C_STAT_SLVDESEL; //Clear status bit
+}
+
+void user_i2c_enable_monitor(void){
+	LPC_I2C->CFG |= 0x04; //Enable monitor
+}
+
+void user_i2c_enable_slave(void){
+	LPC_I2C->CFG |= 0x02; //Enable i2c slave
+}
+
+void user_i2c_enable_slave_interrupts(void){
+	LPC_I2C->INTENSET = (I2C_INTENSET_SLVPENDING | I2C_INTENSET_SLVDESEL);
+	NVIC_EnableIRQ(I2C_IRQn);
+}
+
+void user_i2c_set_slave_address(uint8_t slave_seven_bit_address){
+	LPC_I2C->SLVADR[0] = (slave_seven_bit_address << 1); //Set address
+	LPC_I2C->SLVADR[0] &= ~0x01UL; //Enable address
+	LPC_I2C->SLVQUAL0 = 0;
+}
+
+uint8_t user_i2c_slave_data_ready(void){
+	return slave_data_ready;
+}
+
+uint8_t user_i2c_slave_data_read(uint8_t *slave_data_buff){
+	uint8_t i;
+
+	for(i = 0; i < slave_rx_buff_len; i++){
+		slave_data_buff[i] = slave_rx_buff[i];
+	}
+
+	slave_data_ready = 0;
+
+	return slave_rx_buff_len;
+}
+
+int main(void){
+	volatile uint8_t my_rx_data[I2C_RX_BUFF];
+	volatile uint8_t my_rx_data_len;
+
+	SystemCoreClockUpdate();
+
+	slave_tx_buff[0] = 0x30;
+	slave_tx_buff[1] = 0x31;
+	slave_tx_buff[2] = 0x32;
+	slave_tx_buff[3] = 0x33;
+
+	user_i2c_init();
+	user_i2c_set_slave_address(I2C_ADDR_7BIT);
+	user_i2c_enable_slave();
+	user_i2c_enable_slave_interrupts();
+
+	while(1) {
+		if(user_i2c_slave_data_ready()){
+			my_rx_data_len = user_i2c_slave_data_read(my_rx_data);
+			my_rx_data_len = my_rx_data_len;
+		}
+	}
+}
+#endif

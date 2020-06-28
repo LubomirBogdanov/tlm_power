@@ -1,0 +1,15 @@
+iocon_8xx.h:180:20:Chip_IOCON_PinMuxSet	24	static
+iocon_8xx.h:221:20:Chip_IOCON_PinEnableHysteresis	16	static
+iocon_8xx.h:233:20:Chip_IOCON_PinDisableHysteresis	16	static
+iocon_8xx.h:253:20:Chip_IOCON_PinEnableInputInverted	16	static
+iocon_8xx.h:264:20:Chip_IOCON_PinDisableInputInverted	16	static
+iocon_8xx.h:285:20:Chip_IOCON_PinEnableOpenDrainMode	16	static
+iocon_8xx.h:296:20:Chip_IOCON_PinDisableOpenDrainMode	16	static
+iocon_8xx.c:51:6:Chip_IOCON_PinSetMode	24	static
+iocon_8xx.c:60:6:Chip_IOCON_PinSetHysteresis	16	static
+iocon_8xx.c:71:6:Chip_IOCON_PinSetInputInverted	16	static
+iocon_8xx.c:82:6:Chip_IOCON_PinSetOpenDrainMode	16	static
+iocon_8xx.c:93:6:Chip_IOCON_PinSetSampleMode	24	static
+iocon_8xx.c:102:6:Chip_IOCON_PinSetClockDivisor	24	static
+iocon_8xx.c:111:6:Chip_IOCON_PinSetI2CMode	24	static
+iocon_8xx.c:121:6:Chip_IOCON_SetPinMuxing	32	static

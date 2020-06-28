@@ -1,0 +1,34 @@
+/*
+ * user_i2c.h
+ *
+ *  Created on: Jun 6, 2020
+ *      Author: lbogdanov
+ */
+
+#ifndef USER_I2C_H_
+#define USER_I2C_H_
+
+#if defined MCU_TARGET_0
+
+#elif defined MCU_TARGET_1
+
+#elif defined MCU_TARGET_2
+
+#elif defined MCU_TARGET_3
+
+#elif defined MCU_TARGET_4
+
+#elif defined MCU_TARGET_5
+
+#elif defined MCU_TARGET_6
+
+#elif defined MCU_TARGET_7
+
+#elif defined MCU_TARGET_8
+
+#elif defined MCU_TARGET_9
+
+#endif
+
+
+#endif /* USER_I2C_H_ */

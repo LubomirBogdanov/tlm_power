@@ -1,0 +1,7 @@
+spi_common_8xx.h:396:24:Chip_SPI_GetStatus	16	static
+spi_common_8xx.h:409:20:Chip_SPI_ClearStatus	16	static
+spi_common_8xx.h:476:24:Chip_SPI_ReadRawRXFifo	16	static
+spi_common_8xx.h:501:20:Chip_SPI_WriteTXData	16	static
+spis_8xx.c:51:16:Chip_SPIS_FindSSEL	24	static
+spis_8xx.c:71:10:Chip_SPIS_XferHandler	32	static
+spis_8xx.c:166:10:Chip_SPIS_XferBlocking	24	static

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value="${workspace_loc:/lpc_chip_8xx/inc}"/>
+	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value="USE_USER_I2C_DAEDALUS"/>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>
 	<section name="OptionalMessageDialog.hide.">

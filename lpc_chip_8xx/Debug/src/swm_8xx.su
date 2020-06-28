@@ -1,0 +1,4 @@
+swm_8xx.h:257:20:Chip_SWM_EnableFixedPin	16	static
+swm_8xx.h:267:20:Chip_SWM_DisableFixedPin	16	static
+swm_8xx.c:54:6:Chip_SWM_MovablePinAssign	32	static
+swm_8xx.c:64:6:Chip_SWM_FixedPinEnable	16	static

@@ -1,0 +1,2 @@
+pinint_8xx.c:51:6:Chip_PININT_SetPatternMatchSrc	24	static
+pinint_8xx.c:62:6:Chip_PININT_SetPatternMatchConfig	32	static

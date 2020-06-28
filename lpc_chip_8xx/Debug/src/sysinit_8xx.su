@@ -1,0 +1,7 @@
+clock_8xx.h:148:20:Chip_Clock_SetupSystemPLL	16	static
+clock_8xx.h:157:20:Chip_Clock_IsSystemPLLLocked	8	static
+clock_8xx.h:190:20:Chip_Clock_SetSysClockDiv	16	static
+fmc_8xx.h:77:20:Chip_FMC_SetFLASHAccess	24	static
+sysinit_8xx.c:53:6:Chip_SetupXtalClocking	8	static
+sysinit_8xx.c:88:6:Chip_SetupIrcClocking	8	static
+sysinit_8xx.c:94:6:Chip_SystemInit	8	static

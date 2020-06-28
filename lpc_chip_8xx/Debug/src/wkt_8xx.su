@@ -1,0 +1,4 @@
+wkt_8xx.h:75:28:Chip_WKT_GetClockSource	16	static
+wkt_8xx.c:50:6:Chip_WKT_SetClockSource	16	static
+wkt_8xx.c:61:10:Chip_WKT_GetClockRate	16	static
+wkt_8xx.c:74:6:Chip_WKT_Start	24	static

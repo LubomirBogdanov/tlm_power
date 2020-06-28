@@ -1,0 +1,9 @@
+syscon_8xx.h:277:20:Chip_SYSCTL_AssertPeriphReset	16	static
+syscon_8xx.h:287:20:Chip_SYSCTL_DeassertPeriphReset	16	static
+syscon_8xx.h:297:20:Chip_SYSCTL_PeriphReset	16	static
+clock_8xx.h:200:20:Chip_Clock_EnablePeriphClock	16	static
+clock_8xx.h:210:20:Chip_Clock_DisablePeriphClock	16	static
+i2c_common_8xx.c:47:35:I2C_GetResetID	24	static
+i2c_common_8xx.c:63:28:I2C_GetClockID	24	static
+i2c_common_8xx.c:83:6:Chip_I2C_Init	16	static
+i2c_common_8xx.c:93:6:Chip_I2C_DeInit	16	static

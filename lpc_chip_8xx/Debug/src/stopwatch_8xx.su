@@ -1,0 +1,16 @@
+syscon_8xx.h:277:20:Chip_SYSCTL_AssertPeriphReset	16	static
+syscon_8xx.h:287:20:Chip_SYSCTL_DeassertPeriphReset	16	static
+syscon_8xx.h:297:20:Chip_SYSCTL_PeriphReset	16	static
+clock_8xx.h:200:20:Chip_Clock_EnablePeriphClock	16	static
+mrt_8xx.h:115:20:Chip_MRT_Init	8	static
+mrt_8xx.h:165:20:Chip_MRT_SetInterval	16	static
+mrt_8xx.h:175:24:Chip_MRT_GetTimer	16	static
+mrt_8xx.h:185:20:Chip_MRT_GetEnabled	16	static
+mrt_8xx.h:226:20:Chip_MRT_SetMode	24	static
+stopwatch_8xx.c:57:6:StopWatch_Init	8	static
+stopwatch_8xx.c:71:10:StopWatch_Start	8	static
+stopwatch_8xx.c:78:10:StopWatch_TicksPerSecond	8	static
+stopwatch_8xx.c:84:10:StopWatch_TicksToMs	16	static
+stopwatch_8xx.c:90:10:StopWatch_TicksToUs	16	static
+stopwatch_8xx.c:96:10:StopWatch_MsToTicks	16	static
+stopwatch_8xx.c:102:10:StopWatch_UsToTicks	16	static

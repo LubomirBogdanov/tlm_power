@@ -1,0 +1,15 @@
+/*
+ * user_systick.h
+ *
+ *  Created on: Jun 6, 2020
+ *      Author: lbogdanov
+ */
+
+#ifndef USER_DELAY_H_
+#define USER_DELAY_H_
+
+#include "main.h"
+
+void delay_ms(uint16_t delay_value);
+
+#endif /* USER_DELAY_H_ */

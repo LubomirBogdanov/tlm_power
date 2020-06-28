@@ -1,0 +1,11 @@
+romapi_8xx.h:83:20:iap_entry	16	static
+iap.c:51:9:Chip_IAP_PreSectorForReadWrite	64	static
+iap.c:64:9:Chip_IAP_CopyRamToFlash	72	static
+iap.c:79:9:Chip_IAP_EraseSector	64	static
+iap.c:93:9:Chip_IAP_BlankCheckSector	64	static
+iap.c:106:10:Chip_IAP_ReadPID	48	static
+iap.c:117:10:Chip_IAP_ReadBootCode	48	static
+iap.c:128:9:Chip_IAP_Compare	72	static
+iap.c:142:9:Chip_IAP_ReinvokeISP	48	static
+iap.c:153:10:Chip_IAP_ReadUID	64	static
+iap.c:168:9:Chip_IAP_ErasePage	64	static

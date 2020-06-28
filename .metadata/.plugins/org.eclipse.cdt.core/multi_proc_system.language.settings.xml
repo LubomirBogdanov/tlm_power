@@ -4,7 +4,7 @@
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="com.crt.advproject.GCCBuildCommandParser">
 				<language id="org.eclipse.cdt.core.gcc">
-					<resource project-relative-path="src/main.c">
+					<resource project-relative-path="src/tst/main_1.c">
 						<entry kind="includePath" name="/lpc_chip_8xx/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -22,6 +22,146 @@
 						</entry>
 						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
 						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_3.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_2.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/user_system_init.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_9.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_8.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_5.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_4.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/user_init.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_7.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/tst/main_6.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/user_i2c_standard.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
 						<entry kind="macro" name="__CODE_RED" value="1"/>
 						<entry kind="macro" name="__LPC8XX__" value="1"/>
 						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
@@ -34,18 +174,8 @@
 						</entry>
 						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
 						<entry kind="macro" name="DEBUG" value="1"/>
-						<entry kind="macro" name="__CODE_RED" value="1"/>
-						<entry kind="macro" name="__LPC8XX__" value="1"/>
-						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
-						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
-						<entry kind="macro" name="__REDLIB__" value="1"/>
-					</resource>
-					<resource project-relative-path="src/cr_startup_lpc8xx.c">
-						<entry kind="includePath" name="/lpc_chip_8xx/inc">
-							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
-						</entry>
-						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
-						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
 						<entry kind="macro" name="__CODE_RED" value="1"/>
 						<entry kind="macro" name="__LPC8XX__" value="1"/>
 						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
@@ -63,6 +193,284 @@
 						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
 						<entry kind="macro" name="__MTB_DISABLE" value=""/>
 						<entry kind="macro" name="__REDLIB__" value=""/>
+					</resource>
+					<resource project-relative-path="src/user_i2c_daedalus.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_empty.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/user_delay.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_9.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_8.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/ported.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_7.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_6.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_5.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/straight_func.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_4.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_3.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_2.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_1.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/user_i2c.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_0" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/main_0.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/user_gpio.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/cr_startup_lpc8xx.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
+					</resource>
+					<resource project-relative-path="src/fifo_multi.c">
+						<entry kind="includePath" name="/lpc_chip_8xx/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="CORE_M0PLUS" value="1"/>
+						<entry kind="macro" name="DEBUG" value="1"/>
+						<entry kind="macro" name="MCU_TARGET_1" value="1"/>
+						<entry kind="macro" name="USE_USER_I2C_DAEDALUS" value="1"/>
+						<entry kind="macro" name="__CODE_RED" value="1"/>
+						<entry kind="macro" name="__LPC8XX__" value="1"/>
+						<entry kind="macro" name="__MTB_BUFFER_SIZE" value="256"/>
+						<entry kind="macro" name="__MTB_DISABLE" value="1"/>
+						<entry kind="macro" name="__REDLIB__" value="1"/>
 					</resource>
 				</language>
 			</provider>

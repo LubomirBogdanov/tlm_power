@@ -1,92 +1,184 @@
-19:28:18 **** Build of configuration Debug for project multi_proc_system ****
+17:39:32 **** Incremental Build of configuration Debug for project multi_proc_system ****
 make -r -j2 all 
-Building file: ../src/cr_startup_lpc8xx.c
 Building file: ../src/crp.c
+Building file: ../src/cr_startup_lpc8xx.c
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc8xx.d" -MT"src/cr_startup_lpc8xx.o" -MT"src/cr_startup_lpc8xx.d" -o "src/cr_startup_lpc8xx.o" "../src/cr_startup_lpc8xx.c"
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc8xx.d" -MT"src/cr_startup_lpc8xx.o" -MT"src/cr_startup_lpc8xx.d" -o "src/cr_startup_lpc8xx.o" "../src/cr_startup_lpc8xx.c"
-Finished building: ../src/cr_startup_lpc8xx.c
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
 Finished building: ../src/crp.c
  
-Building file: ../src/main.c
- 
+Building file: ../src/fifo_multi.c
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/main.d" -MT"src/main.o" -MT"src/main.d" -o "src/main.o" "../src/main.c"
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/fifo_multi.d" -MT"src/fifo_multi.o" -MT"src/fifo_multi.d" -o "src/fifo_multi.o" "../src/fifo_multi.c"
+Finished building: ../src/cr_startup_lpc8xx.c
+ 
+Building file: ../src/main_0.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_0.d" -MT"src/main_0.o" -MT"src/main_0.d" -o "src/main_0.o" "../src/main_0.c"
+Finished building: ../src/fifo_multi.c
+ 
+Building file: ../src/main_1.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_1.d" -MT"src/main_1.o" -MT"src/main_1.d" -o "src/main_1.o" "../src/main_1.c"
+Finished building: ../src/main_0.c
+ 
+Building file: ../src/main_2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_2.d" -MT"src/main_2.o" -MT"src/main_2.d" -o "src/main_2.o" "../src/main_2.c"
+Finished building: ../src/main_1.c
+ 
+Building file: ../src/main_3.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_3.d" -MT"src/main_3.o" -MT"src/main_3.d" -o "src/main_3.o" "../src/main_3.c"
+Finished building: ../src/main_3.c
+ 
+Building file: ../src/main_4.c
+Finished building: ../src/main_2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_4.d" -MT"src/main_4.o" -MT"src/main_4.d" -o "src/main_4.o" "../src/main_4.c"
+ 
+Building file: ../src/main_5.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_5.d" -MT"src/main_5.o" -MT"src/main_5.d" -o "src/main_5.o" "../src/main_5.c"
+Finished building: ../src/main_5.c
+ 
+Building file: ../src/main_6.c
+Finished building: ../src/main_4.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_6.d" -MT"src/main_6.o" -MT"src/main_6.d" -o "src/main_6.o" "../src/main_6.c"
+ 
+Building file: ../src/main_7.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_7.d" -MT"src/main_7.o" -MT"src/main_7.d" -o "src/main_7.o" "../src/main_7.c"
+Finished building: ../src/main_7.c
+ 
+Building file: ../src/main_8.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_8.d" -MT"src/main_8.o" -MT"src/main_8.d" -o "src/main_8.o" "../src/main_8.c"
+Finished building: ../src/main_6.c
+ 
+Building file: ../src/main_9.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_9.d" -MT"src/main_9.o" -MT"src/main_9.d" -o "src/main_9.o" "../src/main_9.c"
+Finished building: ../src/main_8.c
+ 
+Building file: ../src/main_empty.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main_empty.d" -MT"src/main_empty.o" -MT"src/main_empty.d" -o "src/main_empty.o" "../src/main_empty.c"
+Finished building: ../src/main_9.c
+ 
 Building file: ../src/mtb.c
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0 -mthumb -specs=redlib.specs -MMD -MP -MF"src/mtb.d" -MT"src/mtb.o" -MT"src/mtb.d" -o "src/mtb.o" "../src/mtb.c"
-In file included from /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/chip.h:185:0,
-                 from ../src/main.c:1:
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h: In function 'Chip_GPIO_SetPortDIRMask':
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: warning: '~' on a boolean expression [-Wbool-operation]
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/mtb.d" -MT"src/mtb.o" -MT"src/mtb.d" -o "src/mtb.o" "../src/mtb.c"
+Finished building: ../src/main_empty.c
+ 
+Building file: ../src/ported.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/ported.d" -MT"src/ported.o" -MT"src/ported.d" -o "src/ported.o" "../src/ported.c"
 Finished building: ../src/mtb.c
  
-  Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
-                                                   ^
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: note: did you mean to use logical not?
-  Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
-                                                   ^
-                                                   !
-Finished building: ../src/main.c
+Building file: ../src/straight_func.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/straight_func.d" -MT"src/straight_func.o" -MT"src/straight_func.d" -o "src/straight_func.o" "../src/straight_func.c"
+Finished building: ../src/straight_func.c
+ 
+Building file: ../src/user_delay.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/user_delay.d" -MT"src/user_delay.o" -MT"src/user_delay.d" -o "src/user_delay.o" "../src/user_delay.c"
+Finished building: ../src/ported.c
+ 
+Building file: ../src/user_gpio.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/user_gpio.d" -MT"src/user_gpio.o" -MT"src/user_gpio.d" -o "src/user_gpio.o" "../src/user_gpio.c"
+Finished building: ../src/user_gpio.c
+ 
+Building file: ../src/user_i2c_daedalus.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/user_i2c_daedalus.d" -MT"src/user_i2c_daedalus.o" -MT"src/user_i2c_daedalus.d" -o "src/user_i2c_daedalus.o" "../src/user_i2c_daedalus.c"
+Finished building: ../src/user_delay.c
+ 
+Building file: ../src/user_system_init.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/user_system_init.d" -MT"src/user_system_init.o" -MT"src/user_system_init.d" -o "src/user_system_init.o" "../src/user_system_init.c"
+Finished building: ../src/user_system_init.c
+ 
+Finished building: ../src/user_i2c_daedalus.c
  
 Building target: multi_proc_system.axf
 Invoking: MCU Linker
-arm-none-eabi-gcc -nostdlib -Xlinker -Map="multi_proc_system.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "multi_proc_system_Debug.ld" -o "multi_proc_system.axf"  ./src/cr_startup_lpc8xx.o ./src/crp.o ./src/main.o ./src/mtb.o   
+arm-none-eabi-gcc -nostdlib -L"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/Debug" -Xlinker -Map="multi_proc_system.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "multi_proc_system_Debug.ld" -o "multi_proc_system.axf"  ./src/cr_startup_lpc8xx.o ./src/crp.o ./src/fifo_multi.o ./src/main_0.o ./src/main_1.o ./src/main_2.o ./src/main_3.o ./src/main_4.o ./src/main_5.o ./src/main_6.o ./src/main_7.o ./src/main_8.o ./src/main_9.o ./src/main_empty.o ./src/mtb.o ./src/ported.o ./src/straight_func.o ./src/user_delay.o ./src/user_gpio.o ./src/user_i2c_daedalus.o ./src/user_system_init.o   -llpc_chip_8xx
 Memory region         Used Size  Region Size  %age Used
-         MFlash4:         644 B         4 KB     15.72%
-         RamLoc1:          0 GB         1 KB      0.00%
+         MFlash4:        3288 B         4 KB     80.27%
+         RamLoc1:         124 B         1 KB     12.11%
 Finished building target: multi_proc_system.axf
  
 make --no-print-directory post-build
 Performing post-build steps
 arm-none-eabi-size "multi_proc_system.axf"; # arm-none-eabi-objcopy -v -O binary "multi_proc_system.axf" "multi_proc_system.bin" ; # checksum -p LPC810 -d "multi_proc_system.bin";
    text	   data	    bss	    dec	    hex	filename
-    644	      0	      0	    644	    284	multi_proc_system.axf
+   3284	      4	    120	   3408	    d50	multi_proc_system.axf
  
-22:20:59 **** Build of configuration Debug for project multi_proc_system ****
+17:39:45 **** Incremental Build of configuration Debug for project multi_proc_system ****
 make -r -j2 all 
-Building file: ../src/crp.c
+make: Nothing to be done for 'all'.
+17:51:31 **** Incremental Build of configuration Debug for project multi_proc_system ****
+make -r -j2 all 
+make: Nothing to be done for 'all'.
+17:55:33 **** Incremental Build of configuration Debug for project multi_proc_system ****
+make -r -j2 all 
+make: Nothing to be done for 'all'.
+18:02:39 **** Incremental Build of configuration Debug for project multi_proc_system ****
+make -r -j2 all 
+make: Nothing to be done for 'all'.
+18:03:49 **** Incremental Build of configuration Debug for project multi_proc_system ****
+make -r -j2 all 
+make: Nothing to be done for 'all'.
+18:07:53 **** Incremental Build of configuration Debug for project multi_proc_system ****
+make -r -j2 all 
+Building file: ../src/user_i2c_daedalus.c
 Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
-Building file: ../src/cr_startup_lpc8xx.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc8xx.d" -MT"src/cr_startup_lpc8xx.o" -MT"src/cr_startup_lpc8xx.d" -o "src/cr_startup_lpc8xx.o" "../src/cr_startup_lpc8xx.c"
-Finished building: ../src/crp.c
- 
-Building file: ../src/main.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/main.d" -MT"src/main.o" -MT"src/main.d" -o "src/main.o" "../src/main.c"
-Finished building: ../src/cr_startup_lpc8xx.c
- 
-Building file: ../src/mtb.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/mtb.d" -MT"src/mtb.o" -MT"src/mtb.d" -o "src/mtb.o" "../src/mtb.c"
-In file included from /home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/chip.h:185,
-                 from ../src/main.c:1:
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h: In function 'Chip_GPIO_SetPortDIRMask':
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: warning: '~' on a boolean expression [-Wbool-operation]
-  Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
-                                                   ^
-/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc/gpio_8xx.h:349:51: note: did you mean to use logical not?
-  Chip_GPIO_SetPortDIRInput(pGPIO, port, pinMask & ~outMask);
-                                                   ^
-                                                   !
-Finished building: ../src/mtb.c
- 
-Finished building: ../src/main.c
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/user_i2c_daedalus.d" -MT"src/user_i2c_daedalus.o" -MT"src/user_i2c_daedalus.d" -o "src/user_i2c_daedalus.o" "../src/user_i2c_daedalus.c"
+Finished building: ../src/user_i2c_daedalus.c
  
 Building target: multi_proc_system.axf
 Invoking: MCU Linker
-arm-none-eabi-gcc -nostdlib -Xlinker -Map="multi_proc_system.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "multi_proc_system_Debug.ld" -o "multi_proc_system.axf"  ./src/cr_startup_lpc8xx.o ./src/crp.o ./src/main.o ./src/mtb.o   
+arm-none-eabi-gcc -nostdlib -L"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/Debug" -Xlinker -Map="multi_proc_system.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "multi_proc_system_Debug.ld" -o "multi_proc_system.axf"  ./src/cr_startup_lpc8xx.o ./src/crp.o ./src/fifo_multi.o ./src/main_0.o ./src/main_1.o ./src/main_2.o ./src/main_3.o ./src/main_4.o ./src/main_5.o ./src/main_6.o ./src/main_7.o ./src/main_8.o ./src/main_9.o ./src/main_empty.o ./src/mtb.o ./src/ported.o ./src/straight_func.o ./src/user_delay.o ./src/user_gpio.o ./src/user_i2c_daedalus.o ./src/user_system_init.o   -llpc_chip_8xx
 Memory region         Used Size  Region Size  %age Used
-         MFlash4:         644 B         4 KB     15.72%
-         RamLoc1:          0 GB         1 KB      0.00%
+         MFlash4:        3292 B         4 KB     80.37%
+         RamLoc1:         124 B         1 KB     12.11%
 Finished building target: multi_proc_system.axf
  
 make --no-print-directory post-build
 Performing post-build steps
 arm-none-eabi-size "multi_proc_system.axf"; # arm-none-eabi-objcopy -v -O binary "multi_proc_system.axf" "multi_proc_system.bin" ; # checksum -p LPC810 -d "multi_proc_system.bin";
    text	   data	    bss	    dec	    hex	filename
-    644	      0	      0	    644	    284	multi_proc_system.axf
+   3288	      4	    120	   3412	    d54	multi_proc_system.axf
  
+18:09:00 **** Build of configuration Debug for project lpc_chip_8xx ****
+make -r all 
+make: Nothing to be done for 'all'.
+18:09:00 **** Incremental Build of configuration Debug for project multi_proc_system ****
+make -r -j2 all 
+Building file: ../src/user_i2c_daedalus.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DMCU_TARGET_1 -DUSE_USER_I2C_DAEDALUS -DDEBUG -D__CODE_RED -DCORE_M0PLUS -D__MTB_DISABLE -D__MTB_BUFFER_SIZE=256 -D__LPC8XX__ -D__REDLIB__ -I"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"=. -mcpu=cortex-m0 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/user_i2c_daedalus.d" -MT"src/user_i2c_daedalus.o" -MT"src/user_i2c_daedalus.d" -o "src/user_i2c_daedalus.o" "../src/user_i2c_daedalus.c"
+Finished building: ../src/user_i2c_daedalus.c
+ 
+Building target: multi_proc_system.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/home/lbogdanov/git_projects/tlm_power/lpc_chip_8xx/Debug" -Xlinker -Map="multi_proc_system.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "multi_proc_system_Debug.ld" -o "multi_proc_system.axf"  ./src/cr_startup_lpc8xx.o ./src/crp.o ./src/fifo_multi.o ./src/main_0.o ./src/main_1.o ./src/main_2.o ./src/main_3.o ./src/main_4.o ./src/main_5.o ./src/main_6.o ./src/main_7.o ./src/main_8.o ./src/main_9.o ./src/main_empty.o ./src/mtb.o ./src/ported.o ./src/straight_func.o ./src/user_delay.o ./src/user_gpio.o ./src/user_i2c_daedalus.o ./src/user_system_init.o   -llpc_chip_8xx
+Memory region         Used Size  Region Size  %age Used
+         MFlash4:        3324 B         4 KB     81.15%
+         RamLoc1:         124 B         1 KB     12.11%
+Finished building target: multi_proc_system.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "multi_proc_system.axf"; # arm-none-eabi-objcopy -v -O binary "multi_proc_system.axf" "multi_proc_system.bin" ; # checksum -p LPC810 -d "multi_proc_system.bin";
+   text	   data	    bss	    dec	    hex	filename
+   3320	      4	    120	   3444	    d74	multi_proc_system.axf
+ 
+18:09:34 **** Incremental Build of configuration Debug for project multi_proc_system ****
+make -r -j2 all 
+make: Nothing to be done for 'all'.

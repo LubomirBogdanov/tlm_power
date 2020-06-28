@@ -1,0 +1,481 @@
+#include "chip.h"
+
+#ifdef MCU_TARGET_1
+
+static I2CM_XFER_T  i2cmXferRec;
+#define I2C_CLK_DIVIDER     (40)
+#define I2C_BITRATE         (100000)
+#define I2C_MODE    (0)
+#define EEPROM0SLVADD       (0x60)
+#define EEPROM1SLVADD       (0x61)
+#define LPC_I2C_PORT         LPC_I2C
+#define LPC_I2C_INTHAND      I2C_IRQHandler
+#define LPC_IRQNUM           I2C_IRQn
+#define EMUEEPROMSIZE 512
+static uint8_t eepromData[2][EMUEEPROMSIZE];
+static uint16_t eepromAddr[2];
+static int curEEPROM, addrbytes;
+
+uint8_t txWorkBuff[EMUEEPROMSIZE], rxWorkBuff[EMUEEPROMSIZE];
+static void Init_I2C_PinMux(void)
+{
+	Chip_Clock_EnablePeriphClock(SYSCTL_CLOCK_SWM);
+	Chip_SWM_MovablePinAssign(SWM_I2C_SDA_IO, 1);
+	Chip_SWM_MovablePinAssign(SWM_I2C_SCL_IO, 0);
+	Chip_IOCON_PinSetI2CMode(LPC_IOCON, IOCON_PIO0, PIN_I2CMODE_FASTPLUS);
+	Chip_IOCON_PinSetI2CMode(LPC_IOCON, IOCON_PIO1, PIN_I2CMODE_FASTPLUS);
+	Chip_Clock_DisablePeriphClock(SYSCTL_CLOCK_SWM);
+}
+
+static void setupI2CMaster(void)
+{
+	Chip_I2C_Init(LPC_I2C_PORT);
+	Chip_I2C_SetClockDiv(LPC_I2C_PORT, I2C_CLK_DIVIDER);
+	Chip_I2CM_SetBusSpeed(LPC_I2C_PORT, I2C_BITRATE);
+	Chip_I2CM_Enable(LPC_I2C_PORT);
+}
+
+static void setupI2CSlave(void)
+{
+	Chip_I2CS_SetSlaveAddr(LPC_I2C_PORT, 0, EEPROM0SLVADD);
+	/* Disable Qualifier for Slave Address 0 */
+	Chip_I2CS_SetSlaveQual0(LPC_I2C_PORT, false, 0);
+	/* Enable Slave Address 0 */
+	Chip_I2CS_EnableSlaveAddr(LPC_I2C_PORT, 0);
+
+	/* Emulated EEPROM 1 is on slave index 1 */
+	Chip_I2CS_SetSlaveAddr(LPC_I2C_PORT, 1, EEPROM1SLVADD);
+	/* Enable Slave Address 1 */
+	Chip_I2CS_EnableSlaveAddr(LPC_I2C_PORT, 1);
+
+	Chip_I2CS_ClearStatus(LPC_I2C_PORT, I2C_STAT_SLVDESEL);
+	Chip_I2C_EnableInt(LPC_I2C_PORT, I2C_INTENSET_SLVPENDING | I2C_INTENSET_SLVDESEL);
+	Chip_I2CS_Enable(LPC_I2C_PORT);
+}
+
+static void setupEmuEEPROM(void)
+{
+	eepromAddr[0] = 0;
+	eepromAddr[1] = 0;
+}
+
+static void setEmuEEPROMAddr(int eepromNum, uint16_t addr)
+{
+	eepromAddr[eepromNum] = (addr & (EMUEEPROMSIZE - 1));
+}
+
+static void incEmuEEPROMAddr(int eepromNum)
+{
+	eepromAddr[eepromNum]++;
+	if (eepromAddr[eepromNum] >= EMUEEPROMSIZE) {
+		eepromAddr[eepromNum] = 0;
+	}
+}
+
+static uint8_t readEmuEEPROM(int eepromNum)
+{
+	uint8_t data = eepromData[eepromNum][eepromAddr[eepromNum]];
+	incEmuEEPROMAddr(eepromNum);
+	return data;
+}
+
+static void writeEmuEEPROM(int eepromNum, uint8_t data)
+{
+	eepromData[eepromNum][eepromAddr[eepromNum]] = data;
+
+	incEmuEEPROMAddr(eepromNum);
+}
+
+static void WaitForI2cXferComplete(I2CM_XFER_T *xferRecPtr)
+{
+	/* Test for still transferring data */
+	while (xferRecPtr->status == I2CM_STATUS_BUSY) {
+		__WFI();
+	}
+}
+
+static void SetupXferRecAndExecute(uint8_t devAddr,
+								   uint8_t *txBuffPtr,
+								   uint16_t txSize,
+								   uint8_t *rxBuffPtr,
+								   uint16_t rxSize)
+{
+	i2cmXferRec.slaveAddr = devAddr;
+	i2cmXferRec.status = 0;
+	i2cmXferRec.txSz = txSize;
+	i2cmXferRec.rxSz = rxSize;
+	i2cmXferRec.txBuff = txBuffPtr;
+	i2cmXferRec.rxBuff = rxBuffPtr;
+
+	/* Wait for master to go pending - needed in mixed master/slave mode on single I2C bus */
+	while (Chip_I2CM_IsMasterPending(LPC_I2C_PORT) == false) {}
+
+	Chip_I2CM_Xfer(LPC_I2C_PORT, &i2cmXferRec);
+	/* Enable Master Interrupts */
+	Chip_I2C_EnableInt(LPC_I2C_PORT, I2C_INTENSET_MSTPENDING | I2C_INTENSET_MSTRARBLOSS | I2C_INTENSET_MSTSTSTPERR);
+	/* Wait for transfer completion */
+	WaitForI2cXferComplete(&i2cmXferRec);
+	/* Disable all Interrupts */
+	Chip_I2C_DisableInt(LPC_I2C_PORT, I2C_INTENSET_MSTPENDING | I2C_INTENSET_MSTRARBLOSS | I2C_INTENSET_MSTSTSTPERR);
+
+	if (i2cmXferRec.status != I2CM_STATUS_OK) {
+		//Print_Val("\r\nI2C error: 0x", i2cmXferRec.status);
+	}
+}
+
+/* Handler for slave start callback */
+static void processSlaveTransferStart(uint8_t addr)
+{
+	if (addr == EEPROM0SLVADD) {
+		curEEPROM = 0;
+	}
+	else {
+		curEEPROM = 1;
+	}
+
+	addrbytes = 0;
+}
+
+/* Handler for slave send callback */
+static uint8_t processSlaveTransferSend(uint8_t *data)
+{
+	/* Send data from emulated EEPROM */
+	*data = readEmuEEPROM(curEEPROM);
+
+	return 0;
+}
+
+/* Handler for slave receive callback */
+static uint8_t processSlaveTransferRecv(uint8_t data)
+{
+	static uint16_t addr;
+
+	if (addrbytes == 0) {
+		/* Address MSB bytes is in */
+		addr = ((uint16_t) data) << 8;
+	}
+	else if (addrbytes == 1) {
+		/* Address LSB bytes is in */
+		addr |= (uint16_t) data;
+
+		/* Set emulated EEPROM address */
+		setEmuEEPROMAddr(curEEPROM, addr);
+	}
+	else {
+		/* Write data to emulated EEPROM */
+		writeEmuEEPROM(curEEPROM, data);
+	}
+	addrbytes++;
+
+	return 0;
+}
+
+/* Handler for slave transfer complete callback */
+static void processSlaveTransferDone(void)
+{
+	/* Nothing needs to be done here */
+}
+
+/* I2C slavecallback function list */
+const static I2CS_XFER_T i2csCallBacks = {
+	&processSlaveTransferStart,
+	&processSlaveTransferSend,
+	&processSlaveTransferRecv,
+	&processSlaveTransferDone
+};
+
+/* Populate EEPROM with some initial data */
+static void fillWorkBuff(uint8_t *buff, uint8_t seed)
+{
+	int i;
+
+	for (i = 0; i < EMUEEPROMSIZE; i++) {
+		buff[i] = seed;
+		seed = seed + (uint8_t) i;
+	}
+}
+
+/* Convert a 16-bit address to to 8-bit values */
+static void toAddr(uint8_t *tx, uint16_t addr)
+{
+	tx[0] = (uint8_t) (addr >> 8);
+	tx[1] = (uint8_t) (addr >> 0);
+}
+
+/* Compate 2 fixed length buffers */
+static bool compFail(uint8_t *ptr1, uint8_t *ptr2)
+{
+	int i;
+
+	for (i  = 0; i < EMUEEPROMSIZE; i++) {
+		if (ptr1[i] != ptr2[i]) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/* EEPROM testing via I2C */
+static void eepromTest(uint8_t eepromAddr)
+{
+	int i;
+	uint8_t rx[8], tx[8];
+	static uint8_t seed = 0;
+
+	Print_Val("Testing emulated EEPROM @ 0x", eepromAddr);
+
+	/* Generate data to send to the emulated EEPROM */
+	fillWorkBuff(txWorkBuff, seed);
+	seed += 33 + eepromAddr;
+
+	/* Write the first 128 bytes to the EEPROM with byte operations */
+	for (i = 0; i < 128; i++) {
+		toAddr(tx, (uint16_t) i);
+		tx[2] = txWorkBuff[i];
+		SetupXferRecAndExecute(eepromAddr, tx, 3, rx, 0);
+	}
+
+	/* Write the next 128 bytes as 16-bit operations */
+	for (i = 0; i < 128; i += 2) {
+		toAddr(tx, (128 + (uint16_t) i));
+		tx[2] = txWorkBuff[128 + i];
+		tx[3] = txWorkBuff[128 + i + 1];
+		SetupXferRecAndExecute(eepromAddr, tx, 4, rx, 0);
+	}
+
+	/* Write the next 256 bytes as 32-bit operations */
+	for (i = 0; i < 256; i += 4) {
+		toAddr(tx, (256 + (uint16_t) i));
+		tx[2] = txWorkBuff[256 + i];
+		tx[3] = txWorkBuff[256 + i + 1];
+		tx[4] = txWorkBuff[256 + i + 2];
+		tx[5] = txWorkBuff[256 + i + 3];
+		SetupXferRecAndExecute(eepromAddr, tx, 6, rx, 0);
+	}
+
+	/* Read back 128 individual bytes */
+	for (i = 0; i < 128; i++) {
+		toAddr(tx, (uint16_t) i);
+		SetupXferRecAndExecute(eepromAddr, tx, 2, rx, 1);
+		rxWorkBuff[i] = rx[0];
+	}
+
+	/* Read the next 128 bytes as 16-bit operations */
+	for (i = 0; i < 128; i += 2) {
+		toAddr(tx, (128 + (uint16_t) i));
+		SetupXferRecAndExecute(eepromAddr, tx, 2, rx, 2);
+		rxWorkBuff[128 + i] = rx[0];
+		rxWorkBuff[128 + i + 1] = rx[1];
+	}
+
+	/* Read the next 256 bytes as 32-bit operations */
+	for (i = 0; i < 256; i += 4) {
+		toAddr(tx, (256 + (uint16_t) i));
+		SetupXferRecAndExecute(eepromAddr, tx, 2, rx, 4);
+		rxWorkBuff[256 + i] = rx[0];
+		rxWorkBuff[256 + i + 1] = rx[1];
+		rxWorkBuff[256 + i + 2] = rx[2];
+		rxWorkBuff[256 + i + 3] = rx[3];
+	}
+
+	/* Compare send and receive data */
+	if (compFail(rxWorkBuff, txWorkBuff)) {
+		Board_LED_Set(0, true);
+		DEBUGSTR("FAILED\r\n");
+	}
+	else {
+		DEBUGSTR("PASSED\r\n");
+	}
+}
+
+/*****************************************************************************
+ * Public functions
+ ****************************************************************************/
+
+/**
+ * @brief	Handle I2C0 interrupt by calling I2CM interrupt transfer handler
+ * @return	Nothing
+ */
+void LPC_I2C_INTHAND(void)
+{
+	uint32_t state = Chip_I2C_GetPendingInt(LPC_I2C_PORT);
+
+	/* Error handling */
+	if (state & (I2C_INTSTAT_MSTRARBLOSS | I2C_INTSTAT_MSTSTSTPERR)) {
+		Chip_I2CM_ClearStatus(LPC_I2C_PORT, I2C_STAT_MSTRARBLOSS | I2C_STAT_MSTSTSTPERR);
+	}
+
+	/* Call I2CM ISR function with the I2C device and transfer rec */
+	if (state & I2C_INTENSET_MSTPENDING) {
+		Chip_I2CM_XferHandler(LPC_I2C_PORT, &i2cmXferRec);
+	}
+
+	/* I2C slave related interrupt */
+	while (state & (I2C_INTENSET_SLVPENDING | I2C_INTENSET_SLVDESEL)) {
+		Chip_I2CS_XferHandler(LPC_I2C_PORT, &i2csCallBacks);
+
+		/* Update state */
+		state = Chip_I2C_GetPendingInt(LPC_I2C_PORT);
+	}
+}
+
+/**
+ * @brief	Main routine for I2C example
+ * @return	Function should not exit
+ */
+int main(void)
+{
+	/* Generic Initialization */
+	SystemCoreClockUpdate();
+	Board_Init();
+
+	/* Clear activity LED */
+	Board_LED_Set(0, false);
+
+	/* Setup I2C pin muxing */
+	Init_I2C_PinMux();
+
+	/* Setup I2C, master, and slave */
+	setupI2CMaster();
+	setupI2CSlave();
+
+	/* Setup emulated EEPROMd evice */
+	setupEmuEEPROM();
+
+	/* Enable the interrupt for the I2C */
+	NVIC_EnableIRQ(LPC_IRQNUM);
+
+	DEBUGSTR("2 Emulated EEPROM I2C devices using 2 I2C slaves\r\n");
+
+	/* Test each emulated EEPROM */
+	while (1) {
+		/* Read some data from the emulated EEPROMs */
+		eepromTest(EEPROM0SLVADD);
+		eepromTest(EEPROM1SLVADD);
+	}
+}
+
+
+
+
+/*
+const uint32_t OscRateIn = 0;
+const uint32_t ExtRateIn = 0;
+
+#define I2C_ADDR_7BIT           	(0x60)
+#define TICKRATE_HZ             	(1000)
+#define MONRDYEN					(1 << 16)
+#define MONRDY						(1 << 16)
+#define SLVPENDING					(1 << 8)
+#define SLVSTATE					(3 << 9)
+#define SLVCONTINUE					(1 << 0)
+#define SLVIDX						(3 << 12)
+#define SLVMONOV					(1 << 17)
+
+#define SLVSTATE_ADDR				0x00
+#define SLVSTATE_RECEIVE			0x01
+#define SLVSTATE_TRANSMIT			0x02
+#define SLVSTATE_RESERVED			0x03
+
+#define SLVIDX_0					0x00
+#define SLVIDX_1					0x01
+#define SLVIDX_2					0x02
+#define SLVIDX_3					0x03
+
+static volatile uint32_t ticks;
+
+void SysTick_Handler(void){
+	ticks++;
+}
+
+void delay_ms(uint16_t delay_value){
+	uint32_t ticks_timeout = ticks;
+	ticks_timeout += delay_value;
+	while(ticks < ticks_timeout){
+		__WFI();
+	}
+}
+
+void I2C_IRQHandler(void){
+	volatile uint32_t irq_status;
+	volatile uint32_t slave_state;
+	volatile uint32_t slave_address_ack;
+	volatile uint32_t i = 0;
+
+	irq_status = LPC_I2C->INTSTAT;
+
+	if(irq_status & MONRDY){
+		i = LPC_I2C->MONRXDAT;
+	}
+
+	//if(irq_status & SLVPENDING){
+		slave_address_ack = (irq_status & SLVIDX) >> 12;
+		slave_state = (irq_status & SLVSTATE) >> 9;
+		switch(slave_state){
+		case SLVSTATE_ADDR:
+			i = LPC_I2C->SLVDAT;
+			LPC_I2C->SLVCTL |= SLVCONTINUE;
+			break;
+		case SLVSTATE_RECEIVE:
+			break;
+		case SLVSTATE_TRANSMIT:
+			break;
+		case SLVSTATE_RESERVED:
+			break;
+		}
+
+		switch(slave_address_ack){
+		case SLVIDX_0:
+			break;
+		case SLVIDX_1:
+			break;
+		case SLVIDX_2:
+			break;
+		case SLVIDX_3:
+			i++;
+			break;
+		}
+
+	//}
+}
+
+int main(void){
+	uint32_t ret = 0;
+
+	SystemCoreClockUpdate();
+
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_SWM;
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_GPIO;
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_IOCON;
+	LPC_SYSCTL->SYSAHBCLKCTRL |= 1 << SYSCTL_CLOCK_I2C0;
+
+	LPC_SWM->PINASSIGN[7] &= 0x00FFFFFF;
+	LPC_SWM->PINASSIGN[8] &= 0xFFFFFF00;
+	LPC_SWM->PINASSIGN[7] |= 0x01 << 24; //P0.1 = I2C_SDA
+	LPC_SWM->PINASSIGN[8] |= 0x00; //P0.0 = I2C_SCL
+	LPC_IOCON->PIO0[0] |= PIN_OD_MASK;
+	LPC_IOCON->PIO0[1] |= PIN_OD_MASK;
+
+	LPC_SYSCON->PRESETCTRL &= ~(1 << 6);
+	LPC_SYSCON->PRESETCTRL |= 1 << 6;
+
+	LPC_I2C->CLKDIV = 20; //114 kHz
+	LPC_I2C->MSTTIME = 0x01; //3 clocks SCL(high), 2 clocks SCL(low), do not use logic operators here
+	LPC_I2C->CFG |= 0x02; //Enable master & slave
+	LPC_I2C->CFG |= 0x04; //Enable monitor
+
+	LPC_I2C->SLVADR[0] = (I2C_ADDR_7BIT << 1) | 0x01; //Set address and enable it
+
+	LPC_I2C->INTENSET |= MONRDYEN; //Monitor data ready
+
+	NVIC_EnableIRQ(I2C_IRQn);
+	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
+
+	while(1) {
+		delay_ms(1);
+	}
+}
+*/
+
+#endif
